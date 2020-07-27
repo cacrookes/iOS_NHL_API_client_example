@@ -14,6 +14,7 @@
 		33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */; };
 		33CB788F24CF7C98007D6C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CB788E24CF7C98007D6C38 /* Assets.xcassets */; };
 		33CB789224CF7C98007D6C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */; };
+		33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		33CB788E24CF7C98007D6C38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33CB789124CF7C98007D6C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33CB789324CF7C98007D6C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		33CB788124CF7C97007D6C38 /* Udacity Final Project */ = {
 			isa = PBXGroup;
 			children = (
+				33CB789924CF7D0F007D6C38 /* Model */,
 				33CB788224CF7C97007D6C38 /* AppDelegate.swift */,
 				33CB788424CF7C97007D6C38 /* SceneDelegate.swift */,
 				33CB788624CF7C97007D6C38 /* ViewController.swift */,
@@ -68,6 +71,14 @@
 				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
 			);
 			path = "Udacity Final Project";
+			sourceTree = "<group>";
+		};
+		33CB789924CF7D0F007D6C38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +156,7 @@
 				33CB788724CF7C97007D6C38 /* ViewController.swift in Sources */,
 				33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */,
 				33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */,
+				33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
