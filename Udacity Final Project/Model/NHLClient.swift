@@ -72,4 +72,14 @@ class NHLClient {
         }
     }
     
+    class func getTeamRoster(forTeamID teamID: Int, completion: @escaping ([RosterResponse.Player],Error?) -> Void){
+        _ = taskForGETRequest(url: Endpoints.getTeamRoster(teamID).url, responseType: RosterResponse.self)  { (response, error) in
+            if let response = response {
+                completion(response.roster, nil)
+            } else {
+                completion([], nil)
+            }
+        }
+    }
+    
 }
