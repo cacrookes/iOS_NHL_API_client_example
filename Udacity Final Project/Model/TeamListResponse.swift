@@ -1,5 +1,5 @@
 //
-//  TeamResponse.swift
+//  TeamListResponse.swift
 //  Udacity Final Project
 //
 //  Created by Christopher Crookes on 2020-07-30.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TeamResponse: Codable {
+struct TeamListResponse: Codable {
     struct Team: Codable {
         struct Venue: Codable {
             struct TimeZone: Codable {
