@@ -36,4 +36,40 @@ class NHLClient {
         }
     }
     
+    class func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionDataTask {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                print(error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+        
+        return task
+    }
+    
+    class func getTeamList(completion: @escaping ([TeamListResponse.Team], Error?) -> Void){
+        _ = taskForGETRequest(url: Endpoints.getAllTeams.url, responseType: TeamListResponse.self) { (response, error) in
+            if let response = response {
+                completion(response.teams, nil)
+            } else {
+                completion([], nil)
+            }
+        }
+    }
+    
 }
