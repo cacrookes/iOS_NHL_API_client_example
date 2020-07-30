@@ -16,7 +16,7 @@ class NHLClient {
         case getAllTeams
         case getTeamRoster(Int)
         case getPlayerInfo(Int)
-        case getPlayerStats(Int)
+        case getPlayerStats(Int, String)
         
         var stringValue: String {
             switch self{
@@ -26,8 +26,8 @@ class NHLClient {
                 return Endpoints.base + "/teams/\(teamID)/roster"
             case .getPlayerInfo(let playerID):
                 return Endpoints.base + "/people/\(playerID)"
-            case .getPlayerStats(let playerID):
-                return Endpoints.base + "/people/\(playerID)/stats?stats=statsSingleSeason&season=20192020"
+            case .getPlayerStats(let playerID, let season):
+                return Endpoints.base + "/people/\(playerID)/stats?stats=statsSingleSeason&season=\(season)"
             }
         }
         
@@ -86,6 +86,16 @@ class NHLClient {
         _ = taskForGETRequest(url: Endpoints.getPlayerInfo(playerID).url, responseType: PlayerResponse.self, completion: { (response, error) in
             if let response = response {
                 completion(response.people[0], nil)
+            } else {
+                completion(nil, error)
+            }
+        })
+    }
+    
+    class func getPlayerStats(forPlayerID playerID: Int, forSeason season: String, completion: @escaping(SingleSeasonStatsResponse.Stats.Splits.Stat?, Error?) -> Void) {
+        _ = taskForGETRequest(url: Endpoints.getPlayerStats(playerID, season).url, responseType: SingleSeasonStatsResponse.self, completion: { (response, error) in
+            if let response = response {
+                completion(response.stats[0].splits[0].stat, nil)
             } else {
                 completion(nil, error)
             }
