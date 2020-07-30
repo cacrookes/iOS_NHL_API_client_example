@@ -15,12 +15,6 @@ struct RosterResponse: Codable {
             let fullName: String
             let link: String
         }
-        struct Position: Codable {
-            let code: String
-            let name: String
-            let type: String
-            let abbreviation: String
-        }
         let person: Person
         let jerseyNumber: String
         let position: Position
