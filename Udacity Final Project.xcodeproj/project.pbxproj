@@ -89,7 +89,6 @@
 				33CB788E24CF7C98007D6C38 /* Assets.xcassets */,
 				33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */,
 				33CB789324CF7C98007D6C38 /* Info.plist */,
-				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
 			);
 			path = "Udacity Final Project";
 			sourceTree = "<group>";
@@ -100,6 +99,7 @@
 				334DE4A124D36E7E00BB2F67 /* Responses */,
 				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
 				334DE49D24D356B400BB2F67 /* Position.swift */,
+				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
