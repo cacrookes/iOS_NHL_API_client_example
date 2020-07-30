@@ -97,8 +97,8 @@
 		33CB789924CF7D0F007D6C38 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
 				334DE4A124D36E7E00BB2F67 /* Responses */,
+				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
 				334DE49D24D356B400BB2F67 /* Position.swift */,
 			);
 			path = Model;
