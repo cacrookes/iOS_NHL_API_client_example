@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334DE49824D34FD400BB2F67 /* TeamListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE49724D34FD400BB2F67 /* TeamListResponse.swift */; };
+		334DE49A24D353DC00BB2F67 /* RosterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE49924D353DC00BB2F67 /* RosterResponse.swift */; };
+		334DE49C24D3564500BB2F67 /* PlayerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE49B24D3564500BB2F67 /* PlayerResponse.swift */; };
+		334DE49E24D356B400BB2F67 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE49D24D356B400BB2F67 /* Position.swift */; };
+		334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE49F24D3592600BB2F67 /* SingleSeasonStatsResponse.swift */; };
 		33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788224CF7C97007D6C38 /* AppDelegate.swift */; };
 		33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788424CF7C97007D6C38 /* SceneDelegate.swift */; };
 		33CB788724CF7C97007D6C38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788624CF7C97007D6C38 /* ViewController.swift */; };
@@ -18,6 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		334DE49724D34FD400BB2F67 /* TeamListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListResponse.swift; sourceTree = "<group>"; };
+		334DE49924D353DC00BB2F67 /* RosterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterResponse.swift; sourceTree = "<group>"; };
+		334DE49B24D3564500BB2F67 /* PlayerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerResponse.swift; sourceTree = "<group>"; };
+		334DE49D24D356B400BB2F67 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		334DE49F24D3592600BB2F67 /* SingleSeasonStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSeasonStatsResponse.swift; sourceTree = "<group>"; };
 		33CB787F24CF7C97007D6C38 /* Udacity Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Udacity Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CB788224CF7C97007D6C38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33CB788424CF7C97007D6C38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334DE4A124D36E7E00BB2F67 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				334DE49724D34FD400BB2F67 /* TeamListResponse.swift */,
+				334DE49924D353DC00BB2F67 /* RosterResponse.swift */,
+				334DE49B24D3564500BB2F67 /* PlayerResponse.swift */,
+				334DE49F24D3592600BB2F67 /* SingleSeasonStatsResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
 		33CB787624CF7C97007D6C38 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
+				334DE4A124D36E7E00BB2F67 /* Responses */,
+				334DE49D24D356B400BB2F67 /* Position.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,8 +178,13 @@
 				33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */,
 				33CB788724CF7C97007D6C38 /* ViewController.swift in Sources */,
 				33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */,
+				334DE49C24D3564500BB2F67 /* PlayerResponse.swift in Sources */,
 				33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */,
+				334DE49A24D353DC00BB2F67 /* RosterResponse.swift in Sources */,
 				33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */,
+				334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */,
+				334DE49824D34FD400BB2F67 /* TeamListResponse.swift in Sources */,
+				334DE49E24D356B400BB2F67 /* Position.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
