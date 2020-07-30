@@ -50,5 +50,5 @@ struct SingleSeasonStatsResponse: Codable {
         let splits: [Splits]
     }
     let copyright: String
-    let stats: Stats
+    let stats: [Stats]
 }
