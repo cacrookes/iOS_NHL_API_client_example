@@ -62,6 +62,24 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
+		334DE4A224D36F5B00BB2F67 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				33CB788E24CF7C98007D6C38 /* Assets.xcassets */,
+				33CB788824CF7C97007D6C38 /* Main.storyboard */,
+				33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		334DE4A324D36F8000BB2F67 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33CB788624CF7C97007D6C38 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		33CB787624CF7C97007D6C38 = {
 			isa = PBXGroup;
 			children = (
@@ -82,12 +100,10 @@
 			isa = PBXGroup;
 			children = (
 				33CB789924CF7D0F007D6C38 /* Model */,
+				334DE4A224D36F5B00BB2F67 /* Assets */,
+				334DE4A324D36F8000BB2F67 /* Controllers */,
 				33CB788224CF7C97007D6C38 /* AppDelegate.swift */,
 				33CB788424CF7C97007D6C38 /* SceneDelegate.swift */,
-				33CB788624CF7C97007D6C38 /* ViewController.swift */,
-				33CB788824CF7C97007D6C38 /* Main.storyboard */,
-				33CB788E24CF7C98007D6C38 /* Assets.xcassets */,
-				33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */,
 				33CB789324CF7C98007D6C38 /* Info.plist */,
 			);
 			path = "Udacity Final Project";
