@@ -16,5 +16,6 @@ struct K {
     }
     struct Identifiers {
         static let favouritePlayerTableViewCell = "FavouritePlayerTableViewCell"
+        static let teamTableViewCell = "TeamTableViewCell"
     }
 }
