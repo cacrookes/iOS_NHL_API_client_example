@@ -18,37 +18,44 @@ class FavouritesViewController: UIViewController {
     @IBOutlet weak var favouritePlayersTableView: UITableView!
     @IBOutlet weak var noFavesLabel: UILabel!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        noFavesLabel.isHidden = true
+        favouritePlayersTableView.delegate = self
+        favouritePlayersTableView.dataSource = self
         
+        configureUI()
+    }
+    
+    fileprivate func configureUI() {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {
                 setupNoFaves()
+                //loadPlayers([8476459, 8477474])
             } else {
                 loadPlayers(favePlayerIds)
             }
         } else {
-            setupNoFaves()
+            //setupNoFaves()
+            loadPlayers([8476459, 8477474])
         }
     }
+    
     
     func setupNoFaves() {
         favouritePlayersTableView.isHidden = true
         noFavesLabel.isHidden = false
-        
-//        let noFavesLabel = UILabel(frame: CGRect()
-//        noFavesLabel.textAlignment = .center
-//        noFavesLabel.lineBreakMode = .byWordWrapping
-//        noFavesLabel.numberOfLines = 0
-//        noFavesLabel.text = "You have not selected any favourite players yet. Click the add button in the top right to get started"
-//        self.view.addSubview(noFavesLabel)
-//        noFavesLabel.center = self.view.center
     }
     
     func loadPlayers(_ playerIds: [Int]) {
-        
+        noFavesLabel.isHidden = true
+        favouritePlayersTableView.isHidden = false
+        for playerId in playerIds {
+            guard let player = dataController.getPlayer(playerId) else { continue }
+            favouritePlayers.append(player)
+        }
+        favouritePlayersTableView.reloadData()
     }
 
 }
