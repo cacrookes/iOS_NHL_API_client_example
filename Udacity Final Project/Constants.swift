@@ -12,5 +12,6 @@ struct K {
     struct UserDefaultValues {
         static let hasLaunchedBefore = "hasLaunchedBefore"
         static let lastUpdateDate = "lastUpdateDate"
+        static let favouritePlayers = "favouritePlayers"
     }
 }
