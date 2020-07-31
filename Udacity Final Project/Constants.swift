@@ -14,4 +14,7 @@ struct K {
         static let lastUpdateDate = "lastUpdateDate"
         static let favouritePlayers = "favouritePlayers"
     }
+    struct Identifiers {
+        static let favouritePlayerTableViewCell = "FavouritePlayerTableViewCell"
+    }
 }
