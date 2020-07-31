@@ -43,7 +43,7 @@ class DataController {
         // retrieve teams from API
         NHLClient.getTeamList { (teamsFromApi, error) in
             for apiTeam in teamsFromApi {
-                self.storeTeam(apiTeam, in: nil)
+                _ = self.storeTeam(apiTeam, in: nil)
             }
         }
         
@@ -107,7 +107,7 @@ class DataController {
         return results.count > 0 ? results.first : nil
     }
         
-    fileprivate func storePlayer(_ apiPlayer: PlayerResponse.PlayerInfo, in dataPlayer: Player?) -> Player?{
+    fileprivate func storePlayer(_ apiPlayer: PlayerInfo, in dataPlayer: Player?) -> Player?{
         let dataPlayer = dataPlayer ?? Player(context: persistentContainer.viewContext)
         dataPlayer.active = apiPlayer.active
         dataPlayer.alternateCaptain = apiPlayer.alternateCaptain
