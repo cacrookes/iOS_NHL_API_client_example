@@ -16,7 +16,7 @@
 		334DE4A924D3BC9700BB2F67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334DE4A824D3BC9700BB2F67 /* Constants.swift */; };
 		33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788224CF7C97007D6C38 /* AppDelegate.swift */; };
 		33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788424CF7C97007D6C38 /* SceneDelegate.swift */; };
-		33CB788724CF7C97007D6C38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788624CF7C97007D6C38 /* ViewController.swift */; };
+		33CB788724CF7C97007D6C38 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */; };
 		33CB788A24CF7C97007D6C38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33CB788824CF7C97007D6C38 /* Main.storyboard */; };
 		33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */; };
 		33CB788F24CF7C98007D6C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CB788E24CF7C98007D6C38 /* Assets.xcassets */; };
@@ -35,7 +35,7 @@
 		33CB787F24CF7C97007D6C38 /* Udacity Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Udacity Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CB788224CF7C97007D6C38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		33CB788424CF7C97007D6C38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		33CB788624CF7C97007D6C38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		33CB788924CF7C97007D6C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		33CB788C24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Udacity_Final_Project.xcdatamodel; sourceTree = "<group>"; };
 		33CB788E24CF7C98007D6C38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		334DE4A324D36F8000BB2F67 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				33CB788624CF7C97007D6C38 /* ViewController.swift */,
+				33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */,
 				334DE4A624D3B27A00BB2F67 /* DataController.swift */,
 			);
 			path = Controllers;
@@ -198,7 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */,
-				33CB788724CF7C97007D6C38 /* ViewController.swift in Sources */,
+				33CB788724CF7C97007D6C38 /* FavouritesViewController.swift in Sources */,
 				33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */,
 				334DE49C24D3564500BB2F67 /* PlayerResponse.swift in Sources */,
 				33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */,
