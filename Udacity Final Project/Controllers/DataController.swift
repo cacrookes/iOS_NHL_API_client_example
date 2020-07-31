@@ -50,7 +50,7 @@ class DataController {
         UserDefaults.standard.set(Date(), forKey: K.UserDefaultValues.lastUpdateDate)
     }
     
-    func fetchTeams() -> [Team] {
+    func getTeams() -> [Team] {
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         var results:[Team] = []
         do {
@@ -61,7 +61,39 @@ class DataController {
         return results
     }
     
-    fileprivate func getTeamById(_ id: Int) -> Team? {
+    func getPlayer(_ id: Int) -> Player? {
+        if let player = fetchPlayerById(id) {
+            return player
+        } else {
+            // player is not in database, so try grabbing from API
+            var results:Player?
+            NHLClient.getPlayerInfo(forPlayerID: id) { (response, error) in
+                if let response = response {
+                    results = self.storePlayer(response, in: nil) ?? nil
+                } else {
+                    results = nil
+                }
+            }
+            return results
+        }
+    }
+    
+    
+    fileprivate func fetchPlayerById(_ id: Int) -> Player? {
+        let request: NSFetchRequest<Player> = Player.fetchRequest()
+        let predicate = NSPredicate(format: "id == %i", id)
+        request.predicate = predicate
+        request.fetchLimit = 1
+        var results:[Player] = []
+        do {
+            results = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error retrieving player from Core Data: \(error)")
+        }
+        return results.count > 0 ? results.first : nil
+    }
+    
+    fileprivate func fetchTeamById(_ id: Int) -> Team? {
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         let predicate = NSPredicate(format: "id == %i", id)
         request.predicate = predicate
@@ -74,8 +106,41 @@ class DataController {
         }
         return results.count > 0 ? results.first : nil
     }
+        
+    fileprivate func storePlayer(_ apiPlayer: PlayerResponse.PlayerInfo, in dataPlayer: Player?) -> Player?{
+        let dataPlayer = dataPlayer ?? Player(context: persistentContainer.viewContext)
+        dataPlayer.active = apiPlayer.active
+        dataPlayer.alternateCaptain = apiPlayer.alternateCaptain
+        dataPlayer.birthCity = apiPlayer.birthCity
+        dataPlayer.birthCountry = apiPlayer.birthCountry
+        dataPlayer.birthDate = apiPlayer.birthDate
+        dataPlayer.birthStateProvince = apiPlayer.birthStateProvince
+        dataPlayer.captain = apiPlayer.captain
+        dataPlayer.currentAge = Int16(apiPlayer.currentAge)
+        dataPlayer.firstName = apiPlayer.firstName
+        dataPlayer.height = apiPlayer.height
+        dataPlayer.id = Int32(apiPlayer.id)
+        dataPlayer.lastName = apiPlayer.lastName
+        dataPlayer.lastUpdated = Date()
+        dataPlayer.name = apiPlayer.fullName
+        dataPlayer.nationality = apiPlayer.nationality
+        dataPlayer.primaryNumber = apiPlayer.primaryNumber
+        dataPlayer.primaryPosition = apiPlayer.primaryPosition.name
+        dataPlayer.rookie = apiPlayer.rookie
+        dataPlayer.rosterStatus = apiPlayer.rosterStatus
+        dataPlayer.shootsCatches = apiPlayer.shootsCatches
+        dataPlayer.team = fetchTeamById(apiPlayer.currentTeam.id)
+        dataPlayer.weight = Int16(apiPlayer.weight)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            print("Error saving player: \(error)")
+            return nil
+        }
+        return dataPlayer
+    }
     
-    fileprivate func storeTeam(_ apiTeam: TeamListResponse.Team, in dataTeam: Team?){
+    fileprivate func storeTeam(_ apiTeam: TeamListResponse.Team, in dataTeam: Team?) -> Team?{
         let dataTeam = dataTeam ?? Team(context: persistentContainer.viewContext)
         dataTeam.abbreviation = apiTeam.abbreviation
         dataTeam.city = apiTeam.locationName
@@ -91,7 +156,9 @@ class DataController {
             try persistentContainer.viewContext.save()
         } catch {
             print("Error saving team: \(error)")
+            return nil
         }
+        return dataTeam
     }
 }
 
