@@ -82,7 +82,7 @@ class NHLClient {
         }
     }
     
-    class func getPlayerInfo(forPlayerID playerID: Int, completion: @escaping(PlayerResponse.PlayerInfo?, Error?) -> Void){
+    class func getPlayerInfo(forPlayerID playerID: Int, completion: @escaping(PlayerInfo?, Error?) -> Void){
         _ = taskForGETRequest(url: Endpoints.getPlayerInfo(playerID).url, responseType: PlayerResponse.self, completion: { (response, error) in
             if let response = response {
                 completion(response.people[0], nil)
