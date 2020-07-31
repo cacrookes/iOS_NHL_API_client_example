@@ -21,6 +21,7 @@
 		33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */; };
 		33CB788F24CF7C98007D6C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CB788E24CF7C98007D6C38 /* Assets.xcassets */; };
 		33CB789224CF7C98007D6C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */; };
+		33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */; };
 		33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		33CB788E24CF7C98007D6C38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		33CB789124CF7C98007D6C38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33CB789324CF7C98007D6C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +123,7 @@
 				334DE4A124D36E7E00BB2F67 /* Responses */,
 				33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */,
 				334DE49D24D356B400BB2F67 /* Position.swift */,
+				33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */,
 				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
 			);
 			path = Model;
@@ -206,6 +209,7 @@
 				334DE49A24D353DC00BB2F67 /* RosterResponse.swift in Sources */,
 				33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */,
 				334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */,
+				33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */,
 				334DE49824D34FD400BB2F67 /* TeamListResponse.swift in Sources */,
 				334DE49E24D356B400BB2F67 /* Position.swift in Sources */,
 				334DE4A924D3BC9700BB2F67 /* Constants.swift in Sources */,
