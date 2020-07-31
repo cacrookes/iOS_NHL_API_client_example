@@ -15,6 +15,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have not selected any favourite players yet. Click the add button in the top right to get started." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vkk-kt-WxT">
+                                <rect key="frame" x="32" y="88" width="350" height="774"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UJr-i3-kOu">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -32,16 +38,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Vkk-kt-WxT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8H1-Mc-r4C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UJr-i3-kOu" secondAttribute="bottom" id="Czm-l0-PE8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Vkk-kt-WxT" secondAttribute="bottom" id="DK5-h2-rDV"/>
                             <constraint firstItem="UJr-i3-kOu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nn8-Ri-VFx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UJr-i3-kOu" secondAttribute="trailing" id="OF5-N0-ekg"/>
                             <constraint firstItem="UJr-i3-kOu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Uqd-BD-qcz"/>
+                            <constraint firstItem="Vkk-kt-WxT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="WVZ-ze-Mw0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Vkk-kt-WxT" secondAttribute="trailing" constant="32" id="adw-MI-eZd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favourites" id="bzh-0H-fcR"/>
                     <connections>
                         <outlet property="favouritePlayersTableView" destination="UJr-i3-kOu" id="obi-CW-eRS"/>
+                        <outlet property="noFavesLabel" destination="Vkk-kt-WxT" id="cCD-fS-vDA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

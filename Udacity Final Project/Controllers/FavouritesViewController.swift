@@ -16,17 +16,40 @@ class FavouritesViewController: UIViewController {
     var favouritePlayers = [Player]()
     
     @IBOutlet weak var favouritePlayersTableView: UITableView!
-    
-
+    @IBOutlet weak var noFavesLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        noFavesLabel.isHidden = true
         
+        if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
+            if favePlayerIds.count == 0 {
+                setupNoFaves()
+            } else {
+                loadPlayers(favePlayerIds)
+            }
+        } else {
+            setupNoFaves()
+        }
     }
     
+    func setupNoFaves() {
+        favouritePlayersTableView.isHidden = true
+        noFavesLabel.isHidden = false
+        
+//        let noFavesLabel = UILabel(frame: CGRect()
+//        noFavesLabel.textAlignment = .center
+//        noFavesLabel.lineBreakMode = .byWordWrapping
+//        noFavesLabel.numberOfLines = 0
+//        noFavesLabel.text = "You have not selected any favourite players yet. Click the add button in the top right to get started"
+//        self.view.addSubview(noFavesLabel)
+//        noFavesLabel.center = self.view.center
+    }
     
-    
+    func loadPlayers(_ playerIds: [Int]) {
+        
+    }
 
 }
 
@@ -37,6 +60,9 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = favouritePlayersTableView.dequeueReusableCell(withIdentifier: K.Identifiers.favouritePlayerTableViewCell)!
+        
+        let player = favouritePlayers[indexPath.row]
+        cell.textLabel?.text = "\(player.team?.abbreviation ?? "N/A"): \(player.primaryNumber ?? "00") - \(player.name ?? "No Name")"
         
         return cell
     }
