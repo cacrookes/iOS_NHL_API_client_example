@@ -34,7 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        checkForLastUpdate()
+        // checkForLastUpdate()
+        
+        // check if this is the first launch. If so, set up some user defaults
+        if !UserDefaults.standard.bool(forKey: K.UserDefaultValues.hasLaunchedBefore) {
+            UserDefaults.standard.set(true, forKey: K.UserDefaultValues.hasLaunchedBefore)
+            UserDefaults.standard.set([Int](), forKey: K.UserDefaultValues.favouritePlayers)
+        }
         return true
     }
 
