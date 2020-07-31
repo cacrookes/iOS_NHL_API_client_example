@@ -1,4 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
+        <attribute name="active" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="alternateCaptain" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="birthCity" optional="YES" attributeType="String"/>
+        <attribute name="birthCountry" optional="YES" attributeType="String"/>
+        <attribute name="birthDate" optional="YES" attributeType="String"/>
+        <attribute name="birthStateProvince" optional="YES" attributeType="String"/>
+        <attribute name="captain" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="currentAge" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="height" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="nationality" optional="YES" attributeType="String"/>
+        <attribute name="primaryNumber" optional="YES" attributeType="String"/>
+        <attribute name="primaryPosition" optional="YES" attributeType="String"/>
+        <attribute name="rookie" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rosterStatus" optional="YES" attributeType="String"/>
+        <attribute name="shootsCatches" optional="YES" attributeType="String"/>
+        <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="team" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Team" inverseName="players" inverseEntity="Team"/>
+    </entity>
+    <entity name="Team" representedClassName="Team" syncable="YES" codeGenerationType="class">
+        <attribute name="abbreviation" attributeType="String"/>
+        <attribute name="city" attributeType="String"/>
+        <attribute name="conference" attributeType="String"/>
+        <attribute name="division" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="officialSite" optional="YES" attributeType="String"/>
+        <attribute name="teamName" attributeType="String"/>
+        <attribute name="venue" optional="YES" attributeType="String"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player"/>
+    </entity>
+    <elements>
+        <element name="Team" positionX="-436.31640625" positionY="214.66796875" width="128" height="238"/>
+        <element name="Player" positionX="-54" positionY="81" width="128" height="373"/>
+    </elements>
 </model>
