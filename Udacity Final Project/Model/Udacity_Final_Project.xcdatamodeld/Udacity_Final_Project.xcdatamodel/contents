@@ -37,10 +37,10 @@
         <attribute name="officialSite" optional="YES" attributeType="String"/>
         <attribute name="teamName" attributeType="String"/>
         <attribute name="venue" optional="YES" attributeType="String"/>
-        <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="team" inverseEntity="Player"/>
+        <relationship name="players" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Player" inverseName="team" inverseEntity="Player"/>
     </entity>
     <elements>
-        <element name="Team" positionX="-436.31640625" positionY="214.66796875" width="128" height="238"/>
         <element name="Player" positionX="-54" positionY="81" width="128" height="373"/>
+        <element name="Team" positionX="-436.31640625" positionY="214.66796875" width="128" height="238"/>
     </elements>
 </model>
