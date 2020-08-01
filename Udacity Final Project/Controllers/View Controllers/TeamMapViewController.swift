@@ -34,44 +34,15 @@ class TeamMapViewController: UIViewController {
     
     func populateMap() {
         teams = dataController.getTeams()
-        createTeamAnnotation(teamIndex: 0, getVenue: true)
-    }
-    
-    func createTeamAnnotation(teamIndex index: Int, getVenue: Bool){
-        let team = teams[index]
-        if team.latitude == 0 || team.longitude == 0 {
-            let geoCoder = CLGeocoder()
-            var venueAddress = ""
-            if getVenue {
-                venueAddress = "\(team.venue ?? ""), \(team.city ?? "")"
-            } else {
-                venueAddress = "\(team.city ?? "")"
-            }
-            
-            geoCoder.geocodeAddressString(venueAddress) { (placemarks, error) in
-                print(venueAddress)
-                if error != nil {
-                    // try getting the coordinates for just the city, without the venue name
-                    if getVenue {
-                        self.createTeamAnnotation(teamIndex: index, getVenue: false)
-                    } else {
-                        print(error!)
-                    }
-                } else {
-                    if let location = placemarks?.first?.location {
-                        print(location.coordinate)
-                        let annotation = MKPointAnnotation()
-                        annotation.title = team.abbreviation ?? "NHL"
-                        annotation.coordinate = location.coordinate
-                        self.mapView.addAnnotation(annotation)
-                    }
-                    if index < self.teams.count - 1{
-                        self.createTeamAnnotation(teamIndex: index + 1, getVenue: true)
-                    }
-                }
-            }
+        for team in teams {
+            let annotation = MKPointAnnotation()
+            annotation.title = team.abbreviation ?? "NHL"
+            annotation.coordinate = TeamAttributes.getTeamCoordinates(forTeamAbbreviation: team.abbreviation ?? "NHL")
+            self.mapView.addAnnotation(annotation)
         }
     }
+    
+    
 }
 
 // MARK: - DataControllerDelegate methods
