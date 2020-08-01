@@ -25,6 +25,7 @@
 		33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */; };
 		33FF219D24D504C400FB1E06 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219C24D504C400FB1E06 /* TeamListViewController.swift */; };
 		33FF21A024D5155700FB1E06 /* TeamMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */; };
+		33FF21A424D5D60900FB1E06 /* TeamAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLClient.swift; sourceTree = "<group>"; };
 		33FF219C24D504C400FB1E06 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMapViewController.swift; sourceTree = "<group>"; };
+		33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				334DE49D24D356B400BB2F67 /* Position.swift */,
 				33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */,
 				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
+				33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */,
 				33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */,
 				334DE49824D34FD400BB2F67 /* TeamListResponse.swift in Sources */,
+				33FF21A424D5D60900FB1E06 /* TeamAttributes.swift in Sources */,
 				334DE49E24D356B400BB2F67 /* Position.swift in Sources */,
 				334DE4A924D3BC9700BB2F67 /* Constants.swift in Sources */,
 			);
