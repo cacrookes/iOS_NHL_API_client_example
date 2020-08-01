@@ -44,13 +44,13 @@ class FavouritesViewController: UIViewController {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {
                 setupNoFaves()
-                //loadPlayers([8476459, 8477474])
+                loadPlayers([8476459, 8477474, 8474593])
             } else {
                 loadPlayers(favePlayerIds)
             }
         } else {
             //setupNoFaves()
-            loadPlayers([8476459, 8477474])
+            loadPlayers([8476459, 8477474, 8474593])
         }
     }
     
@@ -84,8 +84,21 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         let logoName = "\(player.team?.abbreviation?.lowercased() ?? "nhl").png"
         cell.imageView?.image = UIImage(imageLiteralResourceName: logoName)
         cell.textLabel?.text = "#\(player.primaryNumber ?? "00") \(player.name ?? "No Name")"
+        
+        // Set-up detail
+        let positionText = "Position: \(player.primaryPosition ?? "N/A")"
+        var shootCatchText = ""
+        if player.primaryPosition == "Goalie" {
+            shootCatchText = "Catches: \(player.shootsCatches ?? "N/A")"
+        } else {
+            shootCatchText = "Shoots: \(player.shootsCatches ?? "N/A")"
+        }
+        cell.detailTextLabel?.text = "\(positionText), \(shootCatchText)"
+        
+        // Set-up colours
         cell.contentView.backgroundColor = TeamAttributes.getTeamPrimaryColour(forTeamAbbreviation: player.team?.abbreviation ?? "NHL")
         cell.textLabel?.textColor = .white
+        cell.detailTextLabel?.textColor = .white
         return cell
     }
     
