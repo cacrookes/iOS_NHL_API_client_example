@@ -81,8 +81,11 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = favouritePlayersTableView.dequeueReusableCell(withIdentifier: K.Identifiers.favouritePlayerTableViewCell)!
         
         let player = favouritePlayers[indexPath.row]
-        cell.textLabel?.text = "\(player.team?.abbreviation ?? "N/A"): \(player.primaryNumber ?? "00") - \(player.name ?? "No Name")"
-        
+        let logoName = "\(player.team?.abbreviation?.lowercased() ?? "nhl").png"
+        cell.imageView?.image = UIImage(imageLiteralResourceName: logoName)
+        cell.textLabel?.text = "#\(player.primaryNumber ?? "00") \(player.name ?? "No Name")"
+        cell.contentView.backgroundColor = TeamAttributes.getTeamPrimaryColour(forTeamAbbreviation: player.team?.abbreviation ?? "NHL")
+        cell.textLabel?.textColor = .white
         return cell
     }
     
