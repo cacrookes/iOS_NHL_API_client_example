@@ -38,6 +38,18 @@ class DataController {
         }
     }
     
+    func deleteRoster(forTeam team: Team) {
+        let request: NSFetchRequest<Player> = Player.fetchRequest()
+        do {
+            request.predicate = NSPredicate(format: "team == %@", team)
+            let players = try persistentContainer.viewContext.fetch(request)
+            for player in players {
+                persistentContainer.viewContext.delete(player)
+            }
+        } catch {
+            print("Error deleting roster: \(error)")
+        }
+    }
     
     func updateTeams() {
         print("Update Teams called")
@@ -54,6 +66,20 @@ class DataController {
         UserDefaults.standard.set(Date(), forKey: K.UserDefaultValues.lastUpdateDate)
     }
     
+    func updateRoster(forTeam team: Team){
+        print("Update Roster")
+        deleteRoster(forTeam: team)
+        // retrieve roster from API
+        NHLClient.getTeamRoster(forTeamID: Int(team.id)) { (playersFromApi, error) in
+            for apiPlayer in playersFromApi {
+                self.getPlayer(apiPlayer.person.id) { (player, error) in
+                    
+                }
+            }
+            team.lastUpdated = Date()
+        }
+    }
+    
     func getTeams() -> [Team] {
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         var results:[Team] = []
@@ -65,20 +91,25 @@ class DataController {
         return results
     }
     
-    func getPlayer(_ id: Int) -> Player? {
+    func getPlayer(_ id: Int, completion: @escaping(Player?, Error?)->Void) {
+        print("Getting player")
         if let player = fetchPlayerById(id) {
-            return player
+            completion(player, nil)
         } else {
             // player is not in database, so try grabbing from API
             var results:Player?
             NHLClient.getPlayerInfo(forPlayerID: id) { (response, error) in
-                if let response = response {
-                    results = self.storePlayer(response, in: nil) ?? nil
+                if error != nil {
+                    completion(nil, error)
                 } else {
-                    results = nil
+                    do {
+                        results = try self.storePlayer(response!, in: nil)
+                    } catch {
+                        completion(nil, error)
+                    }
+                    completion(results, nil)
                 }
             }
-            return results
         }
     }
     
@@ -111,7 +142,7 @@ class DataController {
         return results.count > 0 ? results.first : nil
     }
         
-    fileprivate func storePlayer(_ apiPlayer: PlayerInfo, in dataPlayer: Player?) -> Player?{
+    fileprivate func storePlayer(_ apiPlayer: PlayerInfo, in dataPlayer: Player?) throws -> Player{
         let dataPlayer = dataPlayer ?? Player(context: persistentContainer.viewContext)
         dataPlayer.active = apiPlayer.active
         dataPlayer.alternateCaptain = apiPlayer.alternateCaptain
@@ -138,8 +169,7 @@ class DataController {
         do {
             try persistentContainer.viewContext.save()
         } catch {
-            print("Error saving player: \(error)")
-            return nil
+            throw error
         }
         return dataPlayer
     }
@@ -151,7 +181,6 @@ class DataController {
         dataTeam.conference  = apiTeam.conference.name
         dataTeam.division = apiTeam.division.name
         dataTeam.id = Int16(apiTeam.id)
-        dataTeam.lastUpdated = Date()
         dataTeam.name = apiTeam.name
         dataTeam.officialSite = apiTeam.officialSiteUrl
         dataTeam.teamName = apiTeam.teamName
