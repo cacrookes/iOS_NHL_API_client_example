@@ -65,7 +65,13 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let team = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.teamTableViewCell)!
-        cell.textLabel?.text = team.name ?? "N/A"
+        
+        let logoName = "\(team.abbreviation?.lowercased() ?? "nhl").png"
+        cell.imageView?.image = UIImage(imageLiteralResourceName: logoName)
+        cell.textLabel?.text = team.name ?? "Team Name Mising"
+        cell.contentView.backgroundColor = TeamAttributes.getTeamPrimaryColour(forTeamAbbreviation: team.abbreviation ?? "NHL")
+        cell.textLabel?.textColor = .white
+        
         return cell
     }
     
