@@ -11,7 +11,7 @@ import CoreData
 
 class TeamListViewController: UIViewController {
 
-    var dataControler: DataController!
+    var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Team>!
     
     @IBOutlet weak var teamListTableView: UITableView!
@@ -36,7 +36,7 @@ class TeamListViewController: UIViewController {
         let fetchRequest:NSFetchRequest<Team> = Team.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
     
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataControler.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: "team-list")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: "team-list")
         fetchedResultsController.delegate = self
         
         do {
@@ -65,7 +65,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK: -
+// MARK: - NSFetchedResultsControllerDelegate methods
 extension TeamListViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
@@ -86,4 +86,13 @@ extension TeamListViewController: NSFetchedResultsControllerDelegate {
         }
     }
 
+}
+
+// MARK: - DataControllerDelegate methods
+extension TeamListViewController: DataControllerDelegate {
+    func setDataController(dataController: DataController) {
+        self.dataController = dataController
+    }
+    
+    
 }
