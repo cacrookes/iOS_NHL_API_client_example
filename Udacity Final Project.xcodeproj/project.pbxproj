@@ -23,6 +23,7 @@
 		33CB789224CF7C98007D6C38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33CB789024CF7C98007D6C38 /* LaunchScreen.storyboard */; };
 		33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */; };
 		33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */; };
+		33FF219D24D504C400FB1E06 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219C24D504C400FB1E06 /* TeamListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		33CB789324CF7C98007D6C38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLClient.swift; sourceTree = "<group>"; };
+		33FF219C24D504C400FB1E06 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */,
 				334DE4A624D3B27A00BB2F67 /* DataController.swift */,
+				33FF219C24D504C400FB1E06 /* TeamListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */,
+				33FF219D24D504C400FB1E06 /* TeamListViewController.swift in Sources */,
 				33CB788724CF7C97007D6C38 /* FavouritesViewController.swift in Sources */,
 				33CB788324CF7C97007D6C38 /* AppDelegate.swift in Sources */,
 				334DE49C24D3564500BB2F67 /* PlayerResponse.swift in Sources */,
