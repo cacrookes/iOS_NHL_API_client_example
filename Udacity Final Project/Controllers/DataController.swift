@@ -9,6 +9,10 @@
 import Foundation
 import CoreData
 
+protocol DataControllerDelegate {
+    func setDataController(dataController: DataController)
+}
+
 class DataController {
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Udacity_Final_Project")
