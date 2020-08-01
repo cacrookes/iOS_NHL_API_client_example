@@ -133,10 +133,35 @@
                     <view key="view" contentMode="scaleToFill" id="C2c-uN-KsZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-vA-bPD">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RosterTableViewCell" id="Hq7-Sg-gNF">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hq7-Sg-gNF" id="I51-Kw-rpI">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nIC-hI-n8R" firstAttribute="trailing" secondItem="jFn-vA-bPD" secondAttribute="trailing" id="CCE-rn-rgW"/>
+                            <constraint firstItem="jFn-vA-bPD" firstAttribute="leading" secondItem="nIC-hI-n8R" secondAttribute="leading" id="Ra2-Oe-jCs"/>
+                            <constraint firstItem="jFn-vA-bPD" firstAttribute="top" secondItem="nIC-hI-n8R" secondAttribute="top" id="lr8-Jl-Qfy"/>
+                            <constraint firstItem="nIC-hI-n8R" firstAttribute="bottom" secondItem="jFn-vA-bPD" secondAttribute="bottom" id="nab-O2-HUA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nIC-hI-n8R"/>
                     </view>
                     <navigationItem key="navigationItem" id="Bqb-He-uQD"/>
+                    <connections>
+                        <outlet property="rosterTableView" destination="jFn-vA-bPD" id="K2t-7U-DGQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1c-3k-YCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,7 +294,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rAj-Wi-LDe"/>
+        <segue reference="trt-9X-bpx"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
