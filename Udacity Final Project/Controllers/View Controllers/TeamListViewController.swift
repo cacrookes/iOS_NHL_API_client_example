@@ -26,11 +26,18 @@ class TeamListViewController: UIViewController {
         setupFetchedResultsContainer()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+         
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        fetchedResultsController = nil
+        // TODO: set controller to nil when view is dismissed
+        //fetchedResultsController = nil
     }
+    
     
     fileprivate func setupFetchedResultsContainer() {
         let fetchRequest:NSFetchRequest<Team> = Team.fetchRequest()
@@ -93,6 +100,4 @@ extension TeamListViewController: DataControllerDelegate {
     func setDataController(dataController: DataController) {
         self.dataController = dataController
     }
-    
-    
 }
