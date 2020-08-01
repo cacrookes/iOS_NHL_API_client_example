@@ -24,6 +24,7 @@
 		33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */; };
 		33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */; };
 		33FF219D24D504C400FB1E06 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219C24D504C400FB1E06 /* TeamListViewController.swift */; };
+		33FF21A024D5155700FB1E06 /* TeamMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		33CDA8CF24D4C7930035A396 /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
 		33DEB8D324CF7D7E00BCF706 /* NHLClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NHLClient.swift; sourceTree = "<group>"; };
 		33FF219C24D504C400FB1E06 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */,
 				33FF219C24D504C400FB1E06 /* TeamListViewController.swift */,
+				33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				33CB788524CF7C97007D6C38 /* SceneDelegate.swift in Sources */,
 				334DE4A724D3B27A00BB2F67 /* DataController.swift in Sources */,
 				334DE49A24D353DC00BB2F67 /* RosterResponse.swift in Sources */,
+				33FF21A024D5155700FB1E06 /* TeamMapViewController.swift in Sources */,
 				33DEB8D424CF7D7E00BCF706 /* NHLClient.swift in Sources */,
 				334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */,
 				33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */,
