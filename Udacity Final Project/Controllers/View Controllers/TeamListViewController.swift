@@ -13,6 +13,7 @@ class TeamListViewController: UIViewController {
 
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Team>!
+    fileprivate var selectedRow: IndexPath?
     
     @IBOutlet weak var teamListTableView: UITableView!
     
@@ -38,6 +39,14 @@ class TeamListViewController: UIViewController {
         //fetchedResultsController = nil
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Identifiers.teamListToRosterSegue {
+            if let destination = segue.destination as? RosterViewController {
+                destination.team = fetchedResultsController.object(at: selectedRow!)
+                destination.dataController = dataController
+            }
+        }
+    }
     
     fileprivate func setupFetchedResultsContainer() {
         let fetchRequest:NSFetchRequest<Team> = Team.fetchRequest()
@@ -75,6 +84,10 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath
+        performSegue(withIdentifier: K.Identifiers.teamListToRosterSegue, sender: self)
+    }
     
 }
 
@@ -98,6 +111,7 @@ extension TeamListViewController: NSFetchedResultsControllerDelegate {
             break
         }
     }
+    
 
 }
 
