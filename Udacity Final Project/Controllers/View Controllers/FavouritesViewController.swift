@@ -44,13 +44,13 @@ class FavouritesViewController: UIViewController {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {
                 setupNoFaves()
-                loadPlayers([8476459, 8477474, 8474593])
+                loadPlayers([8476459, 8477474, 8474593, 8480012])
             } else {
                 loadPlayers(favePlayerIds)
             }
         } else {
             //setupNoFaves()
-            loadPlayers([8476459, 8477474, 8474593])
+            loadPlayers([8476459, 8477474, 8474593, 8480012])
         }
     }
     
@@ -64,12 +64,16 @@ class FavouritesViewController: UIViewController {
         noFavesLabel.isHidden = true
         favouritePlayersTableView.isHidden = false
         for playerId in playerIds {
-            guard let player = dataController.getPlayer(playerId) else { continue }
-            favouritePlayers.append(player)
+            dataController.getPlayer(playerId) { (player, error) in
+                if error != nil {
+                    // TODO: Handle error
+                } else {
+                    self.favouritePlayers.append(player!)
+                    self.favouritePlayersTableView.reloadData()
+                }
+            }
         }
-        favouritePlayersTableView.reloadData()
     }
-
 }
 
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
