@@ -119,11 +119,28 @@
                     <navigationItem key="navigationItem" title="Team Map" id="mEi-7Q-kdA"/>
                     <connections>
                         <outlet property="mapView" destination="rI7-Wq-CY9" id="TxX-qa-yCY"/>
+                        <segue destination="mtg-PJ-shr" kind="show" identifier="teamMapToRosterSegue" id="rAj-Wi-LDe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2h-td-Lrs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3768.115942028986" y="454.6875"/>
+        </scene>
+        <!--Roster View Controller-->
+        <scene sceneID="Em8-Fn-5rT">
+            <objects>
+                <viewController id="mtg-PJ-shr" customClass="RosterViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C2c-uN-KsZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nIC-hI-n8R"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bqb-He-uQD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H1c-3k-YCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5096" y="133"/>
         </scene>
         <!--Team List-->
         <scene sceneID="OK7-A5-q4O">
@@ -169,6 +186,7 @@
                     <navigationItem key="navigationItem" title="Team List" id="7Ws-9Z-5ls"/>
                     <connections>
                         <outlet property="teamListTableView" destination="7Ty-Bv-djH" id="w77-0X-RGB"/>
+                        <segue destination="mtg-PJ-shr" kind="show" identifier="teamListToRosterSegue" id="trt-9X-bpx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3s-UJ-5Rd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -250,6 +268,9 @@
             <point key="canvasLocation" x="2857.971014492754" y="454.6875"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rAj-Wi-LDe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="map" catalog="system" width="128" height="113"/>
