@@ -28,6 +28,12 @@ class FavouritesViewController: UIViewController {
         configureUI()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Identifiers.favesToTeamSegue {
+            
+        }
+    }
+    
     fileprivate func configureUI() {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {

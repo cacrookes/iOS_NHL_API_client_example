@@ -83,9 +83,8 @@
 		334DE4A324D36F8000BB2F67 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */,
+				33FF219E24D5051500FB1E06 /* View Controllers */,
 				334DE4A624D3B27A00BB2F67 /* DataController.swift */,
-				33FF219C24D504C400FB1E06 /* TeamListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,6 +129,15 @@
 				33CB788B24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		33FF219E24D5051500FB1E06 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				33CB788624CF7C97007D6C38 /* FavouritesViewController.swift */,
+				33FF219C24D504C400FB1E06 /* TeamListViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
