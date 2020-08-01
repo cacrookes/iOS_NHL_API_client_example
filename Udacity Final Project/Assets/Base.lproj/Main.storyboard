@@ -50,7 +50,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Favourites" id="bzh-0H-fcR">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Xzj-X9-L6Z">
+                        <barButtonItem key="rightBarButtonItem" id="Xzj-X9-L6Z">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Syd-vm-6kH">
                                 <rect key="frame" x="376" y="11" width="18" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -109,7 +109,7 @@
         <!--Team List-->
         <scene sceneID="OK7-A5-q4O">
             <objects>
-                <viewController id="tZh-Fd-CHi" sceneMemberID="viewController">
+                <viewController id="tZh-Fd-CHi" customClass="TeamListViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FeS-FE-lmb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,6 +148,9 @@
                         <viewLayoutGuide key="safeArea" id="yN0-5p-RfI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Team List" id="7Ws-9Z-5ls"/>
+                    <connections>
+                        <outlet property="teamListTableView" destination="7Ty-Bv-djH" id="w77-0X-RGB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3s-UJ-5Rd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
