@@ -73,7 +73,7 @@
         <!--Team Map-->
         <scene sceneID="2t2-Ve-97w">
             <objects>
-                <viewController id="IuX-tv-aOA" sceneMemberID="viewController">
+                <viewController id="IuX-tv-aOA" customClass="TeamMapViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aQe-Jp-xer">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,6 +101,9 @@
                         <viewLayoutGuide key="safeArea" id="a9m-Ez-Pm6"/>
                     </view>
                     <navigationItem key="navigationItem" title="Team Map" id="mEi-7Q-kdA"/>
+                    <connections>
+                        <outlet property="mapView" destination="rI7-Wq-CY9" id="TxX-qa-yCY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2h-td-Lrs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

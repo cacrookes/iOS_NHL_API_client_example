@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import CoreData
+import MapKit
 
 class TeamMapViewController: UIViewController {
 
     var dataController: DataController!
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,4 +28,6 @@ extension TeamMapViewController: DataControllerDelegate {
     func setDataController(dataController: DataController) {
         self.dataController = dataController
     }
+    
 }
+
