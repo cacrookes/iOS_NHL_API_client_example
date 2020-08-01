@@ -49,7 +49,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favourites" id="bzh-0H-fcR"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="bzh-0H-fcR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Xzj-X9-L6Z">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Syd-vm-6kH">
+                                <rect key="frame" x="376" y="11" width="18" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                            </button>
+                            <connections>
+                                <segue destination="BYS-vk-iFF" kind="presentation" identifier="favesToTeamSegue" modalPresentationStyle="fullScreen" id="wuQ-pj-6zN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="favouritePlayersTableView" destination="UJr-i3-kOu" id="obi-CW-eRS"/>
                         <outlet property="noFavesLabel" destination="Vkk-kt-WxT" id="cCD-fS-vDA"/>
@@ -220,5 +231,6 @@
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="map" catalog="system" width="128" height="113"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
