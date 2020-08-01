@@ -41,8 +41,7 @@ class TeamMapViewController: UIViewController {
             self.mapView.addAnnotation(annotation)
         }
     }
-    
-    
+
 }
 
 // MARK: - DataControllerDelegate methods
@@ -63,9 +62,6 @@ extension TeamMapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
           
-
-            // if you want a disclosure button, you'd might do something like:
-            //
             // let detailButton = UIButton(type: .detailDisclosure)
             // annotationView?.rightCalloutAccessoryView = detailButton
         } else {
