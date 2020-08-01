@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // check if this is the first launch. If so, set up some user defaults
         if !UserDefaults.standard.bool(forKey: K.UserDefaultValues.hasLaunchedBefore) {
+            dataController.updateTeams()
             UserDefaults.standard.set(true, forKey: K.UserDefaultValues.hasLaunchedBefore)
             UserDefaults.standard.set([Int](), forKey: K.UserDefaultValues.favouritePlayers)
         }
