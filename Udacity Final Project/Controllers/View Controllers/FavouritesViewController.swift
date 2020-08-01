@@ -30,7 +30,13 @@ class FavouritesViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.favesToTeamSegue {
-            
+            if let tabBarController  = segue.destination as? UITabBarController {
+                for child in tabBarController.children {
+                    if let destinationController = child.children[0] as? DataControllerDelegate {
+                        destinationController.setDataController(dataController: dataController)
+                    }
+                }
+            }
         }
     }
     
