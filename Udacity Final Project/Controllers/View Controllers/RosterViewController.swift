@@ -18,7 +18,7 @@ class RosterViewController: UIViewController {
     fileprivate var favePlayerIds = [Int]()
     
     @IBOutlet weak var rosterTableView: UITableView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,20 +26,8 @@ class RosterViewController: UIViewController {
         
         rosterTableView.dataSource = self
         rosterTableView.delegate = self
-        
-        
-        
-        // check if its been more than 1 day since the roster has been updated.
-        // If so, grab roster info from NHL API.
-        if let teamLastUpdated = team.lastUpdated {
-            if teamLastUpdated.distance(to: Date()) > (60*60*24) {
-                dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
-            }
-            setupFetchedResultsContainer()
-        } else {
-            dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
-        }
-        
+        setupFetchedResultsContainer()
+        setupDataController()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +39,16 @@ class RosterViewController: UIViewController {
         }
     }
     
+    // MARK: Alerts
+    fileprivate func showAlert() {
+        let alertVC = UIAlertController(title: "Error loading roster!", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.setupDataController()
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -59,15 +57,26 @@ class RosterViewController: UIViewController {
         favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
     }
     
-    fileprivate func updateRosterHandler(error: Error?) -> Void {
-        if error != nil {
-            print(error!)
-        } else {
-            setupFetchedResultsContainer()
-            rosterTableView.reloadData()
+    fileprivate func updateRosterHandler(success: Bool, error: Error?) -> Void {
+        guard success else {
+            showAlert()
+            return
         }
+        rosterTableView.reloadData()
     }
 
+    fileprivate func setupDataController() {
+        // check if its been more than 1 day since the roster has been updated.
+        // If so, grab roster info from NHL API.
+        if let teamLastUpdated = team.lastUpdated {
+            if teamLastUpdated.distance(to: Date()) > (60*60*24) {
+                dataController.updateRoster(forTeam: team, completion: updateRosterHandler(success:error:))
+            }
+        } else {
+            dataController.updateRoster(forTeam: team, completion: updateRosterHandler(success:error:))
+        }
+    }
+    
     fileprivate func setupFetchedResultsContainer() {
         let fetchRequest:NSFetchRequest<Player> = Player.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "team == %@", team)
