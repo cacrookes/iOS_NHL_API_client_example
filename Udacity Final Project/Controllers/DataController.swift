@@ -25,7 +25,7 @@ class DataController {
     }()
     
     // based on examples in https://stackoverflow.com/questions/24658641/ios-delete-all-core-data-swift/38449688
-    func deleteAll(from entity: String) {
+    func deleteAll(from entity: String, completion: @escaping(Bool, Error?)->Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
         do {
             let results = try persistentContainer.viewContext.fetch(request)
@@ -33,58 +33,82 @@ class DataController {
                 guard let objectData = object as? NSManagedObject else {continue}
                 persistentContainer.viewContext.delete(objectData)
             }
+            completion(true, nil)
         } catch {
-            print("Error deleting data from \(entity): \(error)")
+            completion(false, error)
         }
     }
     
-    func deleteRoster(forTeam team: Team) {
+    func deleteRoster(forTeam team: Team, completion: @escaping(Bool, Error?)->Void) {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
         do {
             request.predicate = NSPredicate(format: "team == %@", team)
             let players = try persistentContainer.viewContext.fetch(request)
             for player in players {
                 persistentContainer.viewContext.delete(player)
+                try persistentContainer.viewContext.save()
             }
+            completion(true, nil)
         } catch {
-            print("Error deleting roster: \(error)")
+            completion(false, error)
         }
     }
     
-    func updateTeams() {
-        print("Update Teams called")
+    func updateTeams(completion: @escaping(Bool, Error?)->Void) {
         // Delete existing team objects. This will cascade and delete player objects too.
-        deleteAll(from: "Team")
-        
-        // retrieve teams from API
-        NHLClient.getTeamList { (teamsFromApi, error) in
-            for apiTeam in teamsFromApi {
-                _ = self.storeTeam(apiTeam, in: nil)
+        deleteAll(from: "Team") { (success, error) in
+            guard success else {
+                completion(false, error)
+                return
+            }
+            // retrieve teams from API
+            NHLClient.getTeamList { (teamsFromApi, error) in
+                guard let teamsFromApi = teamsFromApi else {
+                    completion(false, error)
+                    return
+                }
+                for apiTeam in teamsFromApi {
+                    self.storeTeam(apiTeam, in: nil) { (success, error) in
+                        guard success else {
+                            completion(false, error)
+                            return
+                        }
+                    }
+                }
+                UserDefaults.standard.set(Date(), forKey: K.UserDefaultValues.lastUpdateDate)
+                completion(true, nil)
             }
         }
-        
-        UserDefaults.standard.set(Date(), forKey: K.UserDefaultValues.lastUpdateDate)
     }
     
-    func updateRoster(forTeam team: Team, completion: @escaping(Error?)->Void) {
-        deleteRoster(forTeam: team)
-        // retrieve roster from API
-        NHLClient.getTeamRoster(forTeamID: Int(team.id)) { (playersFromApi, error) in
-            if error != nil {
-                completion(error)
-            } else {
+    func updateRoster(forTeam team: Team, completion: @escaping(Bool, Error?)->Void) {
+        deleteRoster(forTeam: team) { (success, error) in
+            guard success else {
+                completion(false, error)
+                return
+            }
+            
+            // retrieve roster from API
+            NHLClient.getTeamRoster(forTeamID: Int(team.id)) { (playersFromApi, error) in
+                guard let playersFromApi = playersFromApi else {
+                    completion(false, error)
+                    return
+                }
                 var callbackCount = playersFromApi.count
                 for apiPlayer in playersFromApi {
                     self.getPlayer(apiPlayer.person.id) { (player, error) in
                         callbackCount -= 1
-                        if error != nil {
-                            completion(error)
-                        } else if callbackCount == 0 {
+                        guard player != nil else {
+                            completion(false, error)
+                            return
+                        }
+                        if callbackCount == 0 {
                             team.lastUpdated = Date()
-                            completion(nil)
+                            completion(true, nil)
                         }
                     }
                 }
+                
             }
         }
     }
@@ -183,7 +207,7 @@ class DataController {
         return dataPlayer
     }
     
-    fileprivate func storeTeam(_ apiTeam: TeamListResponse.Team, in dataTeam: Team?) -> Team?{
+    fileprivate func storeTeam(_ apiTeam: TeamListResponse.Team, in dataTeam: Team?, completion: (Bool, Error?)->Void) {
         let dataTeam = dataTeam ?? Team(context: persistentContainer.viewContext)
         dataTeam.abbreviation = apiTeam.abbreviation
         dataTeam.city = apiTeam.locationName
@@ -196,11 +220,10 @@ class DataController {
         dataTeam.venue = apiTeam.venue.name
         do {
             try persistentContainer.viewContext.save()
+            completion(true, nil)
         } catch {
-            print("Error saving team: \(error)")
-            return nil
+            completion(false, error)
         }
-        return dataTeam
     }
 }
 
