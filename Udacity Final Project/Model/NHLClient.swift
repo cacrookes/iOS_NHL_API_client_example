@@ -102,4 +102,14 @@ class NHLClient {
         })
     }
     
+    class func getGoalieStats(forPlayerID playerID: Int, forSeason season: String, completion: @escaping(SingleSeasonGoalieStatsResponse.Stats.Splits.Stat?, Error?) -> Void) {
+        _ = taskForGETRequest(url: Endpoints.getPlayerStats(playerID, season).url, responseType: SingleSeasonGoalieStatsResponse.self, completion: { (response, error) in
+            if let response = response {
+                completion(response.stats[0].splits[0].stat, nil)
+            } else {
+                completion(nil, error)
+            }
+        })
+    }
+    
 }
