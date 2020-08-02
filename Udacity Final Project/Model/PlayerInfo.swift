@@ -19,7 +19,7 @@ struct PlayerInfo: Codable {
     let link: String
     let firstName: String
     let lastName: String
-    let primaryNumber: String
+    let primaryNumber: String?
     let birthDate: String
     let currentAge: Int
     let birthCity: String
@@ -45,7 +45,7 @@ struct PlayerInfo: Codable {
         link = try values.decode(String.self, forKey: .link)
         firstName = try values.decode(String.self, forKey: .firstName)
         lastName = try values.decode(String.self, forKey: .lastName)
-        primaryNumber = try values.decode(String.self, forKey: .primaryNumber)
+       
         birthDate = try values.decode(String.self, forKey: .birthDate)
         currentAge = try values.decode(Int.self, forKey: .currentAge)
         birthCity = try values.decode(String.self, forKey: .birthCity)
@@ -63,6 +63,7 @@ struct PlayerInfo: Codable {
         primaryPosition = try values.decode(Position.self, forKey: .primaryPosition)
         
         // optionals
+        primaryNumber = try values.decodeIfPresent(String.self, forKey: .primaryNumber)
         birthStateProvince = try values.decodeIfPresent(String.self, forKey: .birthStateProvince)
     }
 }
