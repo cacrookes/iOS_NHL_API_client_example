@@ -26,7 +26,7 @@ class RosterViewController: UIViewController {
         rosterTableView.dataSource = self
         rosterTableView.delegate = self
         
-        setupFetchedResultsContainer()
+        
         
         // check if its been more than 1 day since the roster has been updated.
         // If so, grab roster info from NHL API.
@@ -34,6 +34,7 @@ class RosterViewController: UIViewController {
             if teamLastUpdated.distance(to: Date()) > (60*60*24) {
                 dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
             }
+            setupFetchedResultsContainer()
         } else {
             dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
         }
@@ -57,6 +58,7 @@ class RosterViewController: UIViewController {
         if error != nil {
             print(error!)
         } else {
+            setupFetchedResultsContainer()
             rosterTableView.reloadData()
         }
     }
