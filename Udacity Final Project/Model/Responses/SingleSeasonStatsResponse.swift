@@ -28,7 +28,7 @@ struct SingleSeasonStatsResponse: Codable {
                 let evenTimeOnIce: String
                 let penaltyMinutes: String
                 let faceOffPct: Double
-                let shotPct: Int
+                let shotPct: Double
                 let gameWinningGoals: Int
                 let overTimeGoals: Int
                 let shortHandedGoals: Int
