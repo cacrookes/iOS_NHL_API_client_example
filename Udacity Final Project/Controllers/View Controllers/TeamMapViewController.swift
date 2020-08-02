@@ -26,6 +26,11 @@ class TeamMapViewController: UIViewController {
         populateMap()
     }
     
+    
+    @IBAction func favouritesButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func setupMap() {
         let coordinates = CLLocationCoordinate2D(latitude: 37.0902, longitude:  -95.7129)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 6000000, longitudinalMeters: 6000000)

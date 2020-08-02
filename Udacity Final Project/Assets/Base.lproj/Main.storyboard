@@ -317,7 +317,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a9m-Ez-Pm6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Team Map" id="mEi-7Q-kdA"/>
+                    <navigationItem key="navigationItem" title="Team Map" id="mEi-7Q-kdA">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="VpG-ZE-oVy">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1dq-Tn-en0">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Favourites"/>
+                                <connections>
+                                    <action selector="favouritesButtonPressed:" destination="IuX-tv-aOA" eventType="touchUpInside" id="OUw-Fu-MtW"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="rI7-Wq-CY9" id="TxX-qa-yCY"/>
                         <segue destination="mtg-PJ-shr" kind="show" identifier="teamMapToRosterSegue" id="rAj-Wi-LDe"/>
@@ -507,7 +518,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="trt-9X-bpx"/>
+        <segue reference="rAj-Wi-LDe"/>
         <segue reference="s5n-ys-skB"/>
     </inferredMetricsTieBreakers>
     <resources>
