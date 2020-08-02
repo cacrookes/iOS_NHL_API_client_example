@@ -52,7 +52,9 @@ class FavouritesViewController: UIViewController {
     
     // MARK: - Helper Functions
     fileprivate func configureUI() {
+        favouritePlayers = [Player]() // reset array whenever we configure the UI
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
+            print(favePlayerIds)
             if favePlayerIds.count == 0 {
                 setupNoFaves()
             } else {
