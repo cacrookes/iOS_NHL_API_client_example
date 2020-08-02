@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let dataController = DataController()
     
+    /*
     // Checks when the list of teams was last updated.
     // If this is first launch, or it's been more than 4 weeks, update the team list.
     // Since this data almost never changes, we rarely need to grab it from the NHL API.
@@ -31,13 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dataController.updateTeams()
         }
     }
-
+    */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // check if this is the first launch. If so, set up some user defaults
         if !UserDefaults.standard.bool(forKey: K.UserDefaultValues.hasLaunchedBefore) {
-            dataController.updateTeams()
+            dataController.updateTeams { (success, error) in
+                if !success {
+                    print(error!)
+                }
+            }
             UserDefaults.standard.set(true, forKey: K.UserDefaultValues.hasLaunchedBefore)
             UserDefaults.standard.set([Int](), forKey: K.UserDefaultValues.favouritePlayers)
         }
