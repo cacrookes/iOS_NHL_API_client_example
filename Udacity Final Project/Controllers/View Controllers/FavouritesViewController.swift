@@ -25,6 +25,9 @@ class FavouritesViewController: UIViewController {
         favouritePlayersTableView.delegate = self
         favouritePlayersTableView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         configureUI()
     }
     
@@ -49,13 +52,11 @@ class FavouritesViewController: UIViewController {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {
                 setupNoFaves()
-                //loadPlayers([8476459, 8477474, 8474593, 8480012, 8481522])
             } else {
                 loadPlayers(favePlayerIds)
             }
         } else {
             setupNoFaves()
-            //loadPlayers([8476459, 8477474, 8474593, 8480012, 8481522])
         }
     }
     
