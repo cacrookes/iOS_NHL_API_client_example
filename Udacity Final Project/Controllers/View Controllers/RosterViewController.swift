@@ -22,8 +22,6 @@ class RosterViewController: UIViewController {
 
         self.title = team.teamName ?? ""
         
-        
-
         rosterTableView.dataSource = self
         rosterTableView.delegate = self
         
@@ -39,6 +37,10 @@ class RosterViewController: UIViewController {
             dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
         }
         
+    }
+    
+    @IBAction func favouritesButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func updateRosterHandler(error: Error?) -> Void {

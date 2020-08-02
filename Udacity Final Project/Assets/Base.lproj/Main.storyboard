@@ -370,7 +370,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nIC-hI-n8R"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Bqb-He-uQD"/>
+                    <navigationItem key="navigationItem" id="Bqb-He-uQD">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bDY-1O-xkg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ca2-ep-FqN">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Favourites"/>
+                                <connections>
+                                    <action selector="favouritesButtonPressed:" destination="mtg-PJ-shr" eventType="touchUpInside" id="5Aw-iJ-IWz"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="rosterTableView" destination="jFn-vA-bPD" id="K2t-7U-DGQ"/>
                         <segue destination="b5Y-cu-ggh" kind="show" identifier="rosterToPlayerSegue" id="Tl2-7f-Mg8"/>
@@ -519,7 +530,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="rAj-Wi-LDe"/>
-        <segue reference="s5n-ys-skB"/>
+        <segue reference="Tl2-7f-Mg8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
