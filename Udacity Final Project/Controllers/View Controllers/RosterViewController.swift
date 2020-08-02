@@ -15,6 +15,7 @@ class RosterViewController: UIViewController {
     var team: Team!
     var fetchedResultsController: NSFetchedResultsController<Player>!
     fileprivate var selectedPlayer: Player?
+    fileprivate var favePlayerIds = [Int]()
     
     @IBOutlet weak var rosterTableView: UITableView!
     
@@ -52,6 +53,10 @@ class RosterViewController: UIViewController {
     
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    fileprivate func loadFavePlayerIds(){
+        favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
     }
     
     fileprivate func updateRosterHandler(error: Error?) -> Void {
@@ -101,6 +106,7 @@ extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.detailTextLabel?.text = "\(positionText), \(shootCatchText)"
         
+        
         // Set-up colours
         cell.contentView.backgroundColor = TeamAttributes.getTeamPrimaryColour(forTeamAbbreviation: player.team?.abbreviation ?? "NHL")
         cell.textLabel?.textColor = .white
@@ -113,6 +119,7 @@ extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
         selectedPlayer = fetchedResultsController.object(at: indexPath)
         performSegue(withIdentifier: K.Identifiers.rosterToPlayerSegue, sender: self)
     }
+    
     
 }
 
