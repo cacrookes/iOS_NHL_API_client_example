@@ -12,8 +12,8 @@ import CoreLocation
 class FavouritesViewController: UIViewController {
 
     let dataController = (UIApplication.shared.delegate as! AppDelegate).dataController
-    
     var favouritePlayers = [Player]()
+    fileprivate var selectedPlayer: Player?
     
     @IBOutlet weak var favouritePlayersTableView: UITableView!
     @IBOutlet weak var noFavesLabel: UILabel!
@@ -30,12 +30,17 @@ class FavouritesViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.favesToTeamSegue {
-            if let tabBarController  = segue.destination as? UITabBarController {
+            if let tabBarController = segue.destination as? UITabBarController {
                 for child in tabBarController.children {
                     if let destinationController = child.children[0] as? DataControllerDelegate {
                         destinationController.setDataController(dataController: dataController)
                     }
                 }
+            }
+        } else if segue.identifier == K.Identifiers.favesToPlayerSegue {
+            if let playerDetailController = segue.destination as? PlayerDetailViewController {
+                playerDetailController.dataController = dataController
+                playerDetailController.player = selectedPlayer!
             }
         }
     }
@@ -104,6 +109,11 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.textColor = .white
         cell.detailTextLabel?.textColor = .white
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPlayer = favouritePlayers[indexPath.row]
+        performSegue(withIdentifier: K.Identifiers.favesToPlayerSegue, sender: self)
     }
     
 }
