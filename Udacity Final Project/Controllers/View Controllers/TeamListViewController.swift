@@ -48,6 +48,10 @@ class TeamListViewController: UIViewController {
         }
     }
     
+    @IBAction func favouritesButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate func setupFetchedResultsContainer() {
         let fetchRequest:NSFetchRequest<Team> = Team.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]

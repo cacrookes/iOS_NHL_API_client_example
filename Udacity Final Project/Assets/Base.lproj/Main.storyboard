@@ -410,7 +410,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yN0-5p-RfI"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Team List" id="7Ws-9Z-5ls"/>
+                    <navigationItem key="navigationItem" title="Team List" id="7Ws-9Z-5ls">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ajx-Us-2BA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZI7-tR-8RJ">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Favourites"/>
+                                <connections>
+                                    <action selector="favouritesButtonPressed:" destination="tZh-Fd-CHi" eventType="touchUpInside" id="Muc-Xc-tzE"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="teamListTableView" destination="7Ty-Bv-djH" id="w77-0X-RGB"/>
                         <segue destination="mtg-PJ-shr" kind="show" identifier="teamListToRosterSegue" id="trt-9X-bpx"/>
