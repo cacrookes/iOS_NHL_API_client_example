@@ -67,7 +67,7 @@ class DataController {
     }
     
     func updateRoster(forTeam team: Team, completion: @escaping(Error?)->Void) {
-        //deleteRoster(forTeam: team)
+        deleteRoster(forTeam: team)
         // retrieve roster from API
         NHLClient.getTeamRoster(forTeamID: Int(team.id)) { (playersFromApi, error) in
             if error != nil {
