@@ -16,8 +16,18 @@ struct RosterResponse: Codable {
             let link: String
         }
         let person: Person
-        let jerseyNumber: String
+        let jerseyNumber: String?
         let position: Position
+        
+        init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            
+            person = try values.decode(Person.self, forKey: .person)
+            position = try values.decode(Position.self, forKey: .position)
+            
+            // optionals
+            jerseyNumber = try values.decodeIfPresent(String.self, forKey: .jerseyNumber)
+        }
     }
     let copyright: String
     let roster: [Player]
