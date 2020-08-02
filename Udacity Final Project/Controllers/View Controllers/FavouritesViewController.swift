@@ -50,6 +50,16 @@ class FavouritesViewController: UIViewController {
         }
     }
     
+    // MARK: Alerts
+    fileprivate func showAlert() {
+        let alertVC = UIAlertController(title: "Error retrieving favourite players!", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.configureUI()
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Helper Functions
     fileprivate func configureUI() {
         favouritePlayers = [Player]() // reset array whenever we configure the UI
@@ -75,7 +85,7 @@ class FavouritesViewController: UIViewController {
         for playerId in playerIds {
             dataController.getPlayer(playerId) { (player, error) in
                 if error != nil {
-                    // TODO: Handle error
+                    self.showAlert()
                 } else {
                     self.favouritePlayers.append(player!)
                     self.favouritePlayersTableView.reloadData()
