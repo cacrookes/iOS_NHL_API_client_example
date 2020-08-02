@@ -38,7 +38,6 @@ class PlayerDetailViewController: UIViewController {
     @IBOutlet weak var favouritesButton: UIButton!
     
     // MARK: - View life cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,12 +47,18 @@ class PlayerDetailViewController: UIViewController {
         setFaveButtonText()
         configureFavouritesButton()
         
-        if player.primaryPosition == "Goalie" {
-            setGoalieStats()
-        } else {
-            setPlayerStats()
-        }
+        setStats()
         
+    }
+    
+    // MARK: Alerts
+    fileprivate func showAlert() {
+        let alertVC = UIAlertController(title: "Error loading \(player.name ?? "player")'s stats!", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.setStats()
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
     }
     
     // MARK: IBActions
@@ -110,6 +115,14 @@ class PlayerDetailViewController: UIViewController {
         subTitleLabel.text = player.team?.name ?? "No Current Team"
     }
     
+    fileprivate func setStats() {
+        if player.primaryPosition == "Goalie" {
+            setGoalieStats()
+        } else {
+            setPlayerStats()
+        }
+    }
+    
     fileprivate func setNoStats() {
         self.gpLabel.text = "-"
         self.goalsLabel.text = "-"
@@ -130,7 +143,7 @@ class PlayerDetailViewController: UIViewController {
                 self.pimLabel.text = String(stats.pim)
             } else {
                 if error != nil {
-                    print(error!)
+                    self.showAlert()
                 } else {
                     // player has no stats for current season
                     self.setNoStats()
@@ -155,7 +168,7 @@ class PlayerDetailViewController: UIViewController {
                 self.pimLabel.text = String(stats.savePercentage)
             } else {
                 if error != nil {
-                    print(error!)
+                    self.showAlert()
                 } else {
                     // goalie has no stats for the current season
                     self.setNoStats()
