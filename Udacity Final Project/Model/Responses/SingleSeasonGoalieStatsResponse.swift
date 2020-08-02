@@ -29,6 +29,7 @@ struct SingleSeasonGoalieStatsResponse: Codable {
                 let evenShots: Int
                 let powerPlayShots: Int
                 let savePercentage: Double
+                let goalAgainstAverage: Double
                 let games: Int
                 let gamesStarted: Int
                 let shotsAgainst: Int
