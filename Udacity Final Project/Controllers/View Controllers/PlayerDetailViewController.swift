@@ -61,7 +61,17 @@ class PlayerDetailViewController: UIViewController {
                 self.plusminusLabel.text = String(stats.plusMinus)
                 self.pimLabel.text = String(stats.pim)
             } else {
-                print(error!)
+                if error != nil {
+                    print(error!)
+                } else {
+                    // player has no stats for current season
+                    self.gpLabel.text = "-"
+                    self.goalsLabel.text = "-"
+                    self.assistsLabel.text = "-"
+                    self.pointsLabel.text = "-"
+                    self.plusminusLabel.text = "-"
+                    self.pimLabel.text = "-"
+                }
             }
         }
     }
@@ -81,7 +91,18 @@ class PlayerDetailViewController: UIViewController {
                 self.pimHeadingLabel.text = "SV%"
                 self.pimLabel.text = String(stats.savePercentage)
             } else {
-                print(error!)
+                if error != nil {
+                    print(error!)
+                } else {
+                    // goalie has no stats for the current season
+                    self.gpLabel.text = "-"
+                    self.goalsLabel.text = "-"
+                    self.assistsLabel.text = "-"
+                    self.pointsLabel.text = "-"
+                    self.plusminusLabel.text = "-"
+                    self.pimLabel.text = "-"
+                }
+                
             }
         }
     }

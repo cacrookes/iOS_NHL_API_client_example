@@ -95,7 +95,12 @@ class NHLClient {
     class func getPlayerStats(forPlayerID playerID: Int, forSeason season: String, completion: @escaping(SingleSeasonStatsResponse.Stats.Splits.Stat?, Error?) -> Void) {
         _ = taskForGETRequest(url: Endpoints.getPlayerStats(playerID, season).url, responseType: SingleSeasonStatsResponse.self, completion: { (response, error) in
             if let response = response {
-                completion(response.stats[0].splits[0].stat, nil)
+                // handle case where player has no stats for the given year
+                if response.stats[0].splits.count == 0 {
+                    completion(nil, nil)
+                } else {
+                    completion(response.stats[0].splits[0].stat, nil)
+                }
             } else {
                 completion(nil, error)
             }
