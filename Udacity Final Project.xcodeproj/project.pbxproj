@@ -27,6 +27,7 @@
 		33FF21A024D5155700FB1E06 /* TeamMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */; };
 		33FF21A424D5D60900FB1E06 /* TeamAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */; };
 		33FF21A624D617B100FB1E06 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A524D617B100FB1E06 /* RosterViewController.swift */; };
+		33FF21A824D64C8B00FB1E06 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMapViewController.swift; sourceTree = "<group>"; };
 		33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAttributes.swift; sourceTree = "<group>"; };
 		33FF21A524D617B100FB1E06 /* RosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
+		33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				33FF219C24D504C400FB1E06 /* TeamListViewController.swift */,
 				33FF219F24D5155700FB1E06 /* TeamMapViewController.swift */,
 				33FF21A524D617B100FB1E06 /* RosterViewController.swift */,
+				33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				334DE4A024D3592600BB2F67 /* SingleSeasonStatsResponse.swift in Sources */,
 				33CDA8D024D4C7930035A396 /* PlayerInfo.swift in Sources */,
 				334DE49824D34FD400BB2F67 /* TeamListResponse.swift in Sources */,
+				33FF21A824D64C8B00FB1E06 /* PlayerDetailViewController.swift in Sources */,
 				33FF21A424D5D60900FB1E06 /* TeamAttributes.swift in Sources */,
 				334DE49E24D356B400BB2F67 /* Position.swift in Sources */,
 				334DE4A924D3BC9700BB2F67 /* Constants.swift in Sources */,

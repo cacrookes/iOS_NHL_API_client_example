@@ -7,10 +7,26 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Player Detail View Controller-->
+        <scene sceneID="OQK-Q7-eoN">
+            <objects>
+                <viewController id="b5Y-cu-ggh" customClass="PlayerDetailViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xSe-Nc-MWr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="T28-hN-JUG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KvV-eD-XG5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GsP-xb-WoI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1858" y="-744"/>
+        </scene>
         <!--Favourites-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="FavouritesViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="FavouritesViewController" customModule="Udacity_Final_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,6 +96,7 @@
                     <connections>
                         <outlet property="favouritePlayersTableView" destination="UJr-i3-kOu" id="obi-CW-eRS"/>
                         <outlet property="noFavesLabel" destination="Vkk-kt-WxT" id="cCD-fS-vDA"/>
+                        <segue destination="b5Y-cu-ggh" kind="show" identifier="favesToPlayerSegue" id="s5n-ys-skB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -161,11 +178,12 @@
                     <navigationItem key="navigationItem" id="Bqb-He-uQD"/>
                     <connections>
                         <outlet property="rosterTableView" destination="jFn-vA-bPD" id="K2t-7U-DGQ"/>
+                        <segue destination="b5Y-cu-ggh" kind="show" identifier="rosterToPlayerSegue" id="Tl2-7f-Mg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1c-3k-YCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5096" y="133"/>
+            <point key="canvasLocation" x="4620" y="-818"/>
         </scene>
         <!--Team List-->
         <scene sceneID="OK7-A5-q4O">
@@ -295,6 +313,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="trt-9X-bpx"/>
+        <segue reference="s5n-ys-skB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
