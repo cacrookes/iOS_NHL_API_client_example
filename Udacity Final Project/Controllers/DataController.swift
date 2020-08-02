@@ -167,7 +167,7 @@ class DataController {
         dataPlayer.lastUpdated = Date()
         dataPlayer.name = apiPlayer.fullName
         dataPlayer.nationality = apiPlayer.nationality
-        dataPlayer.primaryNumber = apiPlayer.primaryNumber
+        dataPlayer.primaryNumber = Int16(apiPlayer.primaryNumber) ?? 0
         dataPlayer.primaryPosition = apiPlayer.primaryPosition.name
         dataPlayer.rookie = apiPlayer.rookie
         dataPlayer.rosterStatus = apiPlayer.rosterStatus

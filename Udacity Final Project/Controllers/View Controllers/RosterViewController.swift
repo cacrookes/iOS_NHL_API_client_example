@@ -21,6 +21,8 @@ class RosterViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = team.teamName ?? ""
+        
+        
 
         rosterTableView.dataSource = self
         rosterTableView.delegate = self
@@ -50,7 +52,7 @@ class RosterViewController: UIViewController {
     fileprivate func setupFetchedResultsContainer() {
         let fetchRequest:NSFetchRequest<Player> = Player.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "team == %@", team)
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "primaryNumber", ascending: true)]
     
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: "\(team.name!)-roster")
         fetchedResultsController.delegate = self
@@ -73,7 +75,7 @@ extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
         let player = fetchedResultsController.object(at: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Identifiers.rosterTableViewCell)!
         
-        cell.textLabel?.text = "#\(player.primaryNumber ?? "00") \(player.name ?? "No Name")"
+        cell.textLabel?.text = "#\(player.primaryNumber) \(player.name ?? "No Name")"
         
         // Set-up detail
         let positionText = "Position: \(player.primaryPosition ?? "N/A")"

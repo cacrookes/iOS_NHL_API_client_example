@@ -87,7 +87,7 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
         let player = favouritePlayers[indexPath.row]
         let logoName = "\(player.team?.abbreviation?.lowercased() ?? "nhl").png"
         cell.imageView?.image = UIImage(imageLiteralResourceName: logoName)
-        cell.textLabel?.text = "#\(player.primaryNumber ?? "00") \(player.name ?? "No Name")"
+        cell.textLabel?.text = "#\(player.primaryNumber) \(player.name ?? "No Name")"
         
         // Set-up detail
         let positionText = "Position: \(player.primaryPosition ?? "N/A")"

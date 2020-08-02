@@ -16,7 +16,7 @@
         <attribute name="lastUpdated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="nationality" optional="YES" attributeType="String"/>
-        <attribute name="primaryNumber" optional="YES" attributeType="String"/>
+        <attribute name="primaryNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="primaryPosition" optional="YES" attributeType="String"/>
         <attribute name="rookie" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="rosterStatus" optional="YES" attributeType="String"/>
