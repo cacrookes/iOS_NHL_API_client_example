@@ -14,6 +14,7 @@ class RosterViewController: UIViewController {
     var dataController: DataController!
     var team: Team!
     var fetchedResultsController: NSFetchedResultsController<Player>!
+    fileprivate var selectedPlayer: Player?
     
     @IBOutlet weak var rosterTableView: UITableView!
     
@@ -37,6 +38,15 @@ class RosterViewController: UIViewController {
             dataController.updateRoster(forTeam: team, completion: updateRosterHandler(error:))
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Identifiers.rosterToPlayerSegue {
+            if let playerDetailController = segue.destination as? PlayerDetailViewController {
+                playerDetailController.dataController = dataController
+                playerDetailController.player = selectedPlayer!
+            }
+        }
     }
     
     @IBAction func favouritesButtonPressed(_ sender: Any) {
@@ -95,6 +105,11 @@ extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.textColor = .white
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPlayer = fetchedResultsController.object(at: indexPath)
+        performSegue(withIdentifier: K.Identifiers.rosterToPlayerSegue, sender: self)
     }
     
 }
