@@ -21,5 +21,7 @@ struct K {
         static let favesToTeamSegue = "favesToTeamSegue"
         static let teamListToRosterSegue = "teamListToRosterSegue"
         static let teamMapToRosterSegue = "teamMapToRosterSegue"
+        static let rosterToPlayerSegue = "rosterToPlayerSegue"
+        static let favesToPlayerSegue = "favesToPlayerSegue"
     }
 }
