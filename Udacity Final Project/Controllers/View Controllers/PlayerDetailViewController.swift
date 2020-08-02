@@ -35,8 +35,10 @@ class PlayerDetailViewController: UIViewController {
     @IBOutlet weak var pimHeadingLabel: UILabel!
     
     @IBOutlet weak var faveButton: UIButton!
+    @IBOutlet weak var favouritesButton: UIButton!
     
     // MARK: - View life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,6 +46,7 @@ class PlayerDetailViewController: UIViewController {
         setTopLabel()
         setSubHeading()
         setFaveButtonText()
+        configureFavouritesButton()
         
         if player.primaryPosition == "Goalie" {
             setGoalieStats()
@@ -65,7 +68,19 @@ class PlayerDetailViewController: UIViewController {
         setFaveButtonText()
     }
     
+    @IBAction func favouritesButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Configuring UI methods
+    fileprivate func configureFavouritesButton() {
+        if let navController = self.navigationController {
+            let vcCount = navController.viewControllers.count
+            if navController.viewControllers[vcCount - 2].isKind(of: FavouritesViewController.self) {
+                favouritesButton.isHidden = true
+            }
+        }
+    }
     
     fileprivate func setFaveButtonText() {
         favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]

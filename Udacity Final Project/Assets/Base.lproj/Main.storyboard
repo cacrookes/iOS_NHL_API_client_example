@@ -190,11 +190,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="T28-hN-JUG"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KvV-eD-XG5"/>
+                    <navigationItem key="navigationItem" id="KvV-eD-XG5">
+                        <barButtonItem key="rightBarButtonItem" id="BNY-5c-SE6">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nDw-XB-bss">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Favourites"/>
+                                <connections>
+                                    <action selector="favouritesButtonPressed:" destination="b5Y-cu-ggh" eventType="touchUpInside" id="z7l-Qg-0Np"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="assistsHeadingLabel" destination="MhG-d5-C4d" id="sb1-XT-CDV"/>
                         <outlet property="assistsLabel" destination="WwR-SH-T0O" id="enl-09-Tcb"/>
                         <outlet property="faveButton" destination="dDn-gS-43F" id="KBh-J4-3rY"/>
+                        <outlet property="favouritesButton" destination="nDw-XB-bss" id="ApP-YK-rgR"/>
                         <outlet property="goalsHeadingLabel" destination="DgU-kh-7pI" id="vpE-9P-0B3"/>
                         <outlet property="goalsLabel" destination="uAN-kS-BAR" id="7WV-f1-mzr"/>
                         <outlet property="gpHeadingLabel" destination="tdH-KN-why" id="sLQ-cn-tYA"/>
