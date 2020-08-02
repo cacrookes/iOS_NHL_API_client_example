@@ -66,17 +66,26 @@ class DataController {
         UserDefaults.standard.set(Date(), forKey: K.UserDefaultValues.lastUpdateDate)
     }
     
-    func updateRoster(forTeam team: Team){
-        print("Update Roster")
-        deleteRoster(forTeam: team)
+    func updateRoster(forTeam team: Team, completion: @escaping(Error?)->Void) {
+        //deleteRoster(forTeam: team)
         // retrieve roster from API
         NHLClient.getTeamRoster(forTeamID: Int(team.id)) { (playersFromApi, error) in
-            for apiPlayer in playersFromApi {
-                self.getPlayer(apiPlayer.person.id) { (player, error) in
-                    
+            if error != nil {
+                completion(error)
+            } else {
+                var callbackCount = playersFromApi.count
+                for apiPlayer in playersFromApi {
+                    self.getPlayer(apiPlayer.person.id) { (player, error) in
+                        callbackCount -= 1
+                        if error != nil {
+                            completion(error)
+                        } else if callbackCount == 0 {
+                            team.lastUpdated = Date()
+                            completion(nil)
+                        }
+                    }
                 }
             }
-            team.lastUpdated = Date()
         }
     }
     
@@ -92,7 +101,6 @@ class DataController {
     }
     
     func getPlayer(_ id: Int, completion: @escaping(Player?, Error?)->Void) {
-        print("Getting player")
         if let player = fetchPlayerById(id) {
             completion(player, nil)
         } else {
