@@ -28,6 +28,7 @@
 		33FF21A424D5D60900FB1E06 /* TeamAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */; };
 		33FF21A624D617B100FB1E06 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A524D617B100FB1E06 /* RosterViewController.swift */; };
 		33FF21A824D64C8B00FB1E06 /* PlayerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */; };
+		33FF21AA24D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FF21A924D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		33FF21A324D5D60900FB1E06 /* TeamAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAttributes.swift; sourceTree = "<group>"; };
 		33FF21A524D617B100FB1E06 /* RosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
+		33FF21A924D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSeasonGoalieStatsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				334DE49924D353DC00BB2F67 /* RosterResponse.swift */,
 				334DE49B24D3564500BB2F67 /* PlayerResponse.swift */,
 				334DE49F24D3592600BB2F67 /* SingleSeasonStatsResponse.swift */,
+				33FF21A924D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33FF21AA24D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift in Sources */,
 				33CB788D24CF7C97007D6C38 /* Udacity_Final_Project.xcdatamodeld in Sources */,
 				33FF219D24D504C400FB1E06 /* TeamListViewController.swift in Sources */,
 				33CB788724CF7C97007D6C38 /* FavouritesViewController.swift in Sources */,
