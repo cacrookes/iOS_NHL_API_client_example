@@ -11,14 +11,16 @@ import CoreLocation
 
 class FavouritesViewController: UIViewController {
 
+    // MARK: - Global Variables
     let dataController = (UIApplication.shared.delegate as! AppDelegate).dataController
     var favouritePlayers = [Player]()
     fileprivate var selectedPlayer: Player?
     
+    // MARK: - IBOutlets
     @IBOutlet weak var favouritePlayersTableView: UITableView!
     @IBOutlet weak var noFavesLabel: UILabel!
     
-
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +50,7 @@ class FavouritesViewController: UIViewController {
         }
     }
     
+    // MARK: - Helper Functions
     fileprivate func configureUI() {
         if let favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers) as? [Int] {
             if favePlayerIds.count == 0 {
@@ -59,7 +62,6 @@ class FavouritesViewController: UIViewController {
             setupNoFaves()
         }
     }
-    
     
     func setupNoFaves() {
         favouritePlayersTableView.isHidden = true
@@ -82,6 +84,7 @@ class FavouritesViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource methods
 extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favouritePlayers.count
@@ -119,46 +122,3 @@ extension FavouritesViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-/*
- fileprivate func printTeams() {
-
-     NHLClient.getTeamList { (teams, error) in
-         let geoCoder = CLGeocoder()
-         for team in teams{
-             print("\(team.name) - \(team.venue.name), \(team.locationName)")
-             let venueAddress = "\(team.venue.name), \(team.locationName)"
-             geoCoder.geocodeAddressString(venueAddress) { (placemarks, error) in
-                 if error != nil {
-                     print(error!)
-                 }
-                 if let location = placemarks?.first?.location {
-                     print(location.coordinate)
-                 }
-             }
-
-         }
-     }
- }
-
- fileprivate func printRoster() {
-
-     NHLClient.getTeamRoster(forTeamID: 26) { (roster, error) in
-         print(roster.count)
-         for player in roster {
-             print(player.person.fullName)
-         }
-     }
- }
-
- fileprivate func printPlayerInfo() {
-     NHLClient.getPlayerInfo(forPlayerID: 8475204) { (playerInfo, error) in
-         print(playerInfo?.fullName ?? "")
-     }
- }
-
- fileprivate func printPlayerStats() {
-     NHLClient.getPlayerStats(forPlayerID: 8475204, forSeason: "20192020") { (stats, error) in
-         print(stats?.points ?? 0)
-     }
- }
- */
