@@ -25,6 +25,8 @@ class TeamListViewController: UIViewController {
         teamListTableView.dataSource = self
         
         setupFetchedResultsContainer()
+        checkIfTeamsLoaded()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +41,7 @@ class TeamListViewController: UIViewController {
         //fetchedResultsController = nil
     }
     
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.teamListToRosterSegue {
             if let destination = segue.destination as? RosterViewController {
@@ -48,8 +51,36 @@ class TeamListViewController: UIViewController {
         }
     }
     
+    // MARK: Alerts
+    fileprivate func showAlert() {
+        let alertVC = UIAlertController(title: "Error loading teams!", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.loadTeamsToCoreData()
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - IBActions
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Data Controller methods
+    fileprivate func checkIfTeamsLoaded() {
+        if (UserDefaults.standard.object(forKey: K.UserDefaultValues.lastUpdateDate)) == nil {
+            loadTeamsToCoreData()
+        }
+    }
+    
+    fileprivate func loadTeamsToCoreData(){
+        dataController.updateTeams { (success, error) in
+            guard success else {
+                self.showAlert()
+                return
+            }
+            self.teamListTableView.reloadData()
+        }
     }
     
     fileprivate func setupFetchedResultsContainer() {
@@ -98,9 +129,10 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - NSFetchedResultsControllerDelegate methods
 extension TeamListViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        guard let safeIndexPath = indexPath else { return }
         switch type {
         case .insert:
-            teamListTableView.insertRows(at: [indexPath!], with: .automatic)
+            teamListTableView.insertRows(at: [safeIndexPath], with: .automatic)
         default:
             break
         }
