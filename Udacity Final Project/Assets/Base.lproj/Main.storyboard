@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Uab-eH-n3T">
-                                <rect key="frame" x="0.0" y="88" width="414" height="189.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="235.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCA-tk-Z8t">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
@@ -168,6 +168,13 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDn-gS-43F">
+                                        <rect key="frame" x="0.0" y="205.5" width="414" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="faveButtonPressed:" destination="b5Y-cu-ggh" eventType="touchUpInside" id="LBs-Hf-Vqk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="xCA-tk-Z8t" secondAttribute="trailing" id="A5f-fI-CBG"/>
@@ -187,6 +194,7 @@
                     <connections>
                         <outlet property="assistsHeadingLabel" destination="MhG-d5-C4d" id="sb1-XT-CDV"/>
                         <outlet property="assistsLabel" destination="WwR-SH-T0O" id="enl-09-Tcb"/>
+                        <outlet property="faveButton" destination="dDn-gS-43F" id="KBh-J4-3rY"/>
                         <outlet property="goalsHeadingLabel" destination="DgU-kh-7pI" id="vpE-9P-0B3"/>
                         <outlet property="goalsLabel" destination="uAN-kS-BAR" id="7WV-f1-mzr"/>
                         <outlet property="gpHeadingLabel" destination="tdH-KN-why" id="sLQ-cn-tYA"/>
