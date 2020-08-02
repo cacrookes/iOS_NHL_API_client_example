@@ -62,22 +62,22 @@ class NHLClient {
         return task
     }
     
-    class func getTeamList(completion: @escaping ([TeamListResponse.Team], Error?) -> Void){
+    class func getTeamList(completion: @escaping ([TeamListResponse.Team]?, Error?) -> Void){
         _ = taskForGETRequest(url: Endpoints.getAllTeams.url, responseType: TeamListResponse.self) { (response, error) in
             if let response = response {
                 completion(response.teams, nil)
             } else {
-                completion([], error)
+                completion(nil, error)
             }
         }
     }
     
-    class func getTeamRoster(forTeamID teamID: Int, completion: @escaping ([RosterResponse.Player],Error?) -> Void){
+    class func getTeamRoster(forTeamID teamID: Int, completion: @escaping ([RosterResponse.Player]?,Error?) -> Void){
         _ = taskForGETRequest(url: Endpoints.getTeamRoster(teamID).url, responseType: RosterResponse.self)  { (response, error) in
             if let response = response {
                 completion(response.roster, nil)
             } else {
-                completion([], error)
+                completion(nil, error)
             }
         }
     }
