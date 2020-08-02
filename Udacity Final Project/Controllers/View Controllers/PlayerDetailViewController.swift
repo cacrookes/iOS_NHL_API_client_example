@@ -10,9 +10,12 @@ import UIKit
 
 class PlayerDetailViewController: UIViewController {
 
+    // MARK: - Global Variables
     var dataController: DataController!
     var player: Player!
+    var favePlayerIds = [Int]()
     
+    // MARK: - IBOutlets
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -31,6 +34,47 @@ class PlayerDetailViewController: UIViewController {
     @IBOutlet weak var plusminusHeadingLabel: UILabel!
     @IBOutlet weak var pimHeadingLabel: UILabel!
     
+    @IBOutlet weak var faveButton: UIButton!
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.title = player.name ?? "No Name"
+        setTopLabel()
+        setSubHeading()
+        setFaveButtonText()
+        
+        if player.primaryPosition == "Goalie" {
+            setGoalieStats()
+        } else {
+            setPlayerStats()
+        }
+        
+    }
+    
+    // MARK: IBActions
+    @IBAction func faveButtonPressed(_ sender: Any) {
+        let playerId = Int(player.id)
+        if favePlayerIds.contains(playerId) {
+            favePlayerIds.removeAll(where: {$0 == playerId})
+        } else {
+            favePlayerIds.append(playerId)
+        }
+        UserDefaults.standard.set(favePlayerIds, forKey: K.UserDefaultValues.favouritePlayers)
+        setFaveButtonText()
+    }
+    
+    // MARK: - Configuring UI methods
+    
+    fileprivate func setFaveButtonText() {
+        favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
+        if favePlayerIds.contains(Int(player.id)) {
+            faveButton.setTitle("Remove From Favourites List", for: .normal)
+        } else {
+            faveButton.setTitle("Add To Favourites List", for: .normal)
+        }
+    }
     
     fileprivate func setTopLabel() {
         var topLabelArray = [String]()
@@ -51,6 +95,15 @@ class PlayerDetailViewController: UIViewController {
         subTitleLabel.text = player.team?.name ?? "No Current Team"
     }
     
+    fileprivate func setNoStats() {
+        self.gpLabel.text = "-"
+        self.goalsLabel.text = "-"
+        self.assistsLabel.text = "-"
+        self.pointsLabel.text = "-"
+        self.plusminusLabel.text = "-"
+        self.pimLabel.text = "-"
+    }
+    
     fileprivate func setPlayerStats() {
         NHLClient.getPlayerStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in
             if let stats = stats {
@@ -65,17 +118,12 @@ class PlayerDetailViewController: UIViewController {
                     print(error!)
                 } else {
                     // player has no stats for current season
-                    self.gpLabel.text = "-"
-                    self.goalsLabel.text = "-"
-                    self.assistsLabel.text = "-"
-                    self.pointsLabel.text = "-"
-                    self.plusminusLabel.text = "-"
-                    self.pimLabel.text = "-"
+                    self.setNoStats()
                 }
             }
         }
     }
-    
+        
     fileprivate func setGoalieStats() {
         NHLClient.getGoalieStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in
             if let stats = stats {
@@ -95,30 +143,11 @@ class PlayerDetailViewController: UIViewController {
                     print(error!)
                 } else {
                     // goalie has no stats for the current season
-                    self.gpLabel.text = "-"
-                    self.goalsLabel.text = "-"
-                    self.assistsLabel.text = "-"
-                    self.pointsLabel.text = "-"
-                    self.plusminusLabel.text = "-"
-                    self.pimLabel.text = "-"
+                    self.setNoStats()
                 }
                 
             }
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.title = player.name ?? "No Name"
-        setTopLabel()
-        setSubHeading()
-        
-        if player.primaryPosition == "Goalie" {
-            setGoalieStats()
-        } else {
-            setPlayerStats()
-        }
-    }
-
 }
