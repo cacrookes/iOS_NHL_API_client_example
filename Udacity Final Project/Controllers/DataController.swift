@@ -112,15 +112,15 @@ class DataController {
         }
     }
     
-    func getTeams() -> [Team] {
+    func getTeams(completion: ([Team]?, Error?)->Void){
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         var results:[Team] = []
         do {
             results = try persistentContainer.viewContext.fetch(request)
+            completion(results, nil)
         } catch {
-            print("Error fetching teams from Core Data: \(error)")
+            completion(nil, error)
         }
-        return results
     }
     
     func getPlayer(_ id: Int, completion: @escaping(Player?, Error?)->Void) {
