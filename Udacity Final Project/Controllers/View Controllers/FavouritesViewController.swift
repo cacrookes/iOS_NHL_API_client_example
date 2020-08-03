@@ -19,10 +19,13 @@ class FavouritesViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var favouritePlayersTableView: UITableView!
     @IBOutlet weak var noFavesLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityIndicator.center = self.view.center
         
         favouritePlayersTableView.delegate = self
         favouritePlayersTableView.dataSource = self
@@ -60,6 +63,7 @@ class FavouritesViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    
     // MARK: - Helper Functions
     fileprivate func configureUI() {
         favouritePlayers = [Player]() // reset array whenever we configure the UI
@@ -82,8 +86,11 @@ class FavouritesViewController: UIViewController {
     func loadPlayers(_ playerIds: [Int]) {
         noFavesLabel.isHidden = true
         favouritePlayersTableView.isHidden = false
+        activityIndicator.startAnimating()
+        
         for playerId in playerIds {
-            dataController.getPlayer(playerId) { (player, error) in
+            self.dataController.getPlayer(playerId) { (player, error) in
+                self.activityIndicator.stopAnimating()
                 if error != nil {
                     self.showAlert()
                 } else {
@@ -92,6 +99,12 @@ class FavouritesViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // TODO: Delete from production app.
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
 }
 

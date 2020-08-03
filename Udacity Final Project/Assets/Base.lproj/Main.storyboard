@@ -271,6 +271,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="jhZ-vN-LSm">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -298,6 +302,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="jhZ-vN-LSm" id="Abp-IO-ZWp"/>
                         <outlet property="favouritePlayersTableView" destination="UJr-i3-kOu" id="obi-CW-eRS"/>
                         <outlet property="noFavesLabel" destination="Vkk-kt-WxT" id="cCD-fS-vDA"/>
                         <segue destination="b5Y-cu-ggh" kind="show" identifier="favesToPlayerSegue" id="s5n-ys-skB"/>
