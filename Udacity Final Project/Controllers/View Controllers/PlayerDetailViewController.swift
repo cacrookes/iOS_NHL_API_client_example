@@ -26,6 +26,7 @@ class PlayerDetailViewController: UIViewController {
     @IBOutlet weak var plusminusLabel: UILabel!
     @IBOutlet weak var pimLabel: UILabel!
     
+    @IBOutlet weak var subtitleView: UIView!
     @IBOutlet weak var gpHeadingLabel: UILabel!
     @IBOutlet weak var goalsHeadingLabel: UILabel!
     @IBOutlet weak var assistsHeadingLabel: UILabel!
@@ -114,6 +115,8 @@ class PlayerDetailViewController: UIViewController {
     fileprivate func setSubHeading() {
         logoImageView.image = UIImage(imageLiteralResourceName: "\(player.team?.abbreviation?.lowercased() ?? "nhl").png")
         subTitleLabel.text = player.team?.name ?? "No Current Team"
+        subtitleView.sizeToFit()
+        
     }
     
     fileprivate func setStats() {
