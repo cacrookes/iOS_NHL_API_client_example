@@ -1,6 +1,22 @@
 #  NHL Player Tracker
 ## Udacity iOS Nanodegree Final Project
 
+****
+## Table of Contents
+- [NHL Player Tracker](#nhl-player-tracker)
+* [Usage](#usage)
+  + [Favourite Players Screen](#favourite-players-screen)
+  + [Tab Controller](#tab-controller)
+    - [Team List Screen](#team-list-screen)
+    - [Team Map Screen](#team-map-screen)
+  + [Team Roster Screen](#team-roster-screen)
+  + [Player Detail Screen](#player-detail-screen)
+  + [Favourite Players Screen](#favourite-players-screen-1)
+* [Features Implemented](#features-implemented)
+* [Methodolgy](#methodolgy)
+* [Acknowledgements](#acknowledgements)
+***
+
 ## Usage
 ### Favourite Players Screen
 When the app is first launched, you will see the **Favourites** screen. The screen presents a table view with a list of the users favourite players. If the user has not yet added any players to their favourites list, which would be the case the first time the app is launched, the table view is hidden. Instead the user will see a label directing the user to the *add button* in the top right corner.
