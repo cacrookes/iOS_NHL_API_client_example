@@ -2,8 +2,7 @@
 //  TeamListViewController.swift
 //  Udacity Final Project
 //
-//  Created by Christopher Crookes on 2020-07-31.
-//  Copyright © 2020 Christopher Crookes. All rights reserved.
+//  Created on 2020-07-31.
 //
 
 import UIKit
@@ -37,9 +36,6 @@ class TeamListViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        // TODO: set controller to nil when view is dismissed
-        //fetchedResultsController = nil
     }
     
     // MARK: Navigation

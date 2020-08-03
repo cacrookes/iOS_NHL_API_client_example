@@ -2,8 +2,7 @@
 //  RosterResponse.swift
 //  Udacity Final Project
 //
-//  Created by Christopher Crookes on 2020-07-30.
-//  Copyright © 2020 Christopher Crookes. All rights reserved.
+//  Created on 2020-07-30.
 //
 
 import Foundation

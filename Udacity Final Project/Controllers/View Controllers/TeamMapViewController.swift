@@ -2,8 +2,7 @@
 //  TeamMapViewController.swift
 //  Udacity Final Project
 //
-//  Created by Christopher Crookes on 2020-07-31.
-//  Copyright © 2020 Christopher Crookes. All rights reserved.
+//  Created on 2020-07-31.
 //
 
 import UIKit
@@ -67,8 +66,6 @@ extension TeamMapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView?.canShowCallout = true
           
-            // let detailButton = UIButton(type: .detailDisclosure)
-            // annotationView?.rightCalloutAccessoryView = detailButton
         } else {
             annotationView?.annotation = annotation
         }
