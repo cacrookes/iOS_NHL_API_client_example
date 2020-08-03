@@ -18,12 +18,13 @@ class RosterViewController: UIViewController {
     fileprivate var favePlayerIds = [Int]()
     
     @IBOutlet weak var rosterTableView: UITableView!
-        
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = team.teamName ?? ""
-        
+        activityIndicator.center = self.view.center
         rosterTableView.dataSource = self
         rosterTableView.delegate = self
         setupFetchedResultsContainer()
@@ -58,6 +59,7 @@ class RosterViewController: UIViewController {
     }
     
     fileprivate func updateRosterHandler(success: Bool, error: Error?) -> Void {
+        activityIndicator.stopAnimating()
         guard success else {
             showAlert()
             return
@@ -70,9 +72,11 @@ class RosterViewController: UIViewController {
         // If so, grab roster info from NHL API.
         if let teamLastUpdated = team.lastUpdated {
             if teamLastUpdated.distance(to: Date()) > (60*60*24) {
+                activityIndicator.startAnimating()
                 dataController.updateRoster(forTeam: team, completion: updateRosterHandler(success:error:))
             }
         } else {
+            activityIndicator.startAnimating()
             dataController.updateRoster(forTeam: team, completion: updateRosterHandler(success:error:))
         }
     }

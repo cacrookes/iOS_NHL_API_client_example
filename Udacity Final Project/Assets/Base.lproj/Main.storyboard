@@ -401,6 +401,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="cme-ff-QVi">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -424,6 +428,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="cme-ff-QVi" id="NlM-pJ-H6T"/>
                         <outlet property="rosterTableView" destination="jFn-vA-bPD" id="K2t-7U-DGQ"/>
                         <segue destination="b5Y-cu-ggh" kind="show" identifier="rosterToPlayerSegue" id="Tl2-7f-Mg8"/>
                     </connections>
