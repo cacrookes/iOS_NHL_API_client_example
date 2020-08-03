@@ -460,6 +460,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" id="l0p-dw-iFu">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -486,6 +490,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="l0p-dw-iFu" id="xQY-is-vcu"/>
                         <outlet property="teamListTableView" destination="7Ty-Bv-djH" id="w77-0X-RGB"/>
                         <segue destination="mtg-PJ-shr" kind="show" identifier="teamListToRosterSegue" id="trt-9X-bpx"/>
                     </connections>

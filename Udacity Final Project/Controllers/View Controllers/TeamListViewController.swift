@@ -16,6 +16,7 @@ class TeamListViewController: UIViewController {
     fileprivate var selectedRow: IndexPath?
     
     @IBOutlet weak var teamListTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -74,7 +75,9 @@ class TeamListViewController: UIViewController {
     }
     
     fileprivate func loadTeamsToCoreData(){
+        activityIndicator.startAnimating()
         dataController.updateTeams { (success, error) in
+            self.activityIndicator.stopAnimating()
             guard success else {
                 self.showAlert()
                 return
