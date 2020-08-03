@@ -181,6 +181,10 @@
                                     <constraint firstItem="xCA-tk-Z8t" firstAttribute="leading" secondItem="Uab-eH-n3T" secondAttribute="leading" id="RsI-Mw-cIh"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="9p8-tP-4wv">
+                                <rect key="frame" x="175" y="460" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -203,6 +207,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="9p8-tP-4wv" id="vrp-NL-9qQ"/>
                         <outlet property="assistsHeadingLabel" destination="MhG-d5-C4d" id="sb1-XT-CDV"/>
                         <outlet property="assistsLabel" destination="WwR-SH-T0O" id="enl-09-Tcb"/>
                         <outlet property="faveButton" destination="dDn-gS-43F" id="KBh-J4-3rY"/>

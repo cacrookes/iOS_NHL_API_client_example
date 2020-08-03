@@ -36,6 +36,7 @@ class PlayerDetailViewController: UIViewController {
     
     @IBOutlet weak var faveButton: UIButton!
     @IBOutlet weak var favouritesButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -46,6 +47,7 @@ class PlayerDetailViewController: UIViewController {
         setSubHeading()
         setFaveButtonText()
         configureFavouritesButton()
+        activityIndicator.center = self.view.center
         
         setStats()
         
@@ -133,7 +135,9 @@ class PlayerDetailViewController: UIViewController {
     }
     
     fileprivate func setPlayerStats() {
+        activityIndicator.startAnimating()
         NHLClient.getPlayerStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in
+            self.activityIndicator.stopAnimating()
             if let stats = stats {
                 self.gpLabel.text = String(stats.games)
                 self.goalsLabel.text = String(stats.goals)
@@ -153,7 +157,9 @@ class PlayerDetailViewController: UIViewController {
     }
         
     fileprivate func setGoalieStats() {
+        activityIndicator.startAnimating()
         NHLClient.getGoalieStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in
+            self.activityIndicator.stopAnimating()
             if let stats = stats {
                 self.gpLabel.text = String(stats.games)
                 self.goalsHeadingLabel.text = "W"
