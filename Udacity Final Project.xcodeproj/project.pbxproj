@@ -56,6 +56,7 @@
 		33FF21A524D617B100FB1E06 /* RosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		33FF21A724D64C8B00FB1E06 /* PlayerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailViewController.swift; sourceTree = "<group>"; };
 		33FF21A924D664E200FB1E06 /* SingleSeasonGoalieStatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSeasonGoalieStatsResponse.swift; sourceTree = "<group>"; };
+		33FF21AB24D7A62600FB1E06 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +127,7 @@
 				33CB788424CF7C97007D6C38 /* SceneDelegate.swift */,
 				33CB789324CF7C98007D6C38 /* Info.plist */,
 				334DE4A824D3BC9700BB2F67 /* Constants.swift */,
+				33FF21AB24D7A62600FB1E06 /* README.md */,
 			);
 			path = "Udacity Final Project";
 			sourceTree = "<group>";
@@ -391,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QJT9J5N9N;
 				INFOPLIST_FILE = "Udacity Final Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2QJT9J5N9N;
 				INFOPLIST_FILE = "Udacity Final Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
