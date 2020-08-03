@@ -24,7 +24,7 @@ class TeamListViewController: UIViewController {
         
         teamListTableView.delegate = self
         teamListTableView.dataSource = self
-        
+        activityIndicator.center = self.view.center
         setupFetchedResultsContainer()
         checkIfTeamsLoaded()
         
