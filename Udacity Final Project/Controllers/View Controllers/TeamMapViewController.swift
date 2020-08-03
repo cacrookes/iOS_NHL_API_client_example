@@ -16,12 +16,15 @@ class TeamMapViewController: UIViewController {
     var teams = [Team]()
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         mapView.delegate = self
+        activityIndicator.center = self.view.center
         setupMap()
+        activityIndicator.startAnimating()
         dataController.getTeams(completion: getTeamHandler(teams:error:))
     }
     
@@ -44,6 +47,7 @@ class TeamMapViewController: UIViewController {
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error loading teams!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.activityIndicator.startAnimating()
             self.dataController.getTeams(completion: self.getTeamHandler(teams:error:))
         }))
         alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -61,6 +65,7 @@ class TeamMapViewController: UIViewController {
     }
     
     func getTeamHandler(teams: [Team]?, error: Error?) -> Void {
+        activityIndicator.stopAnimating()
         guard teams != nil else {
             showAlert()
             return

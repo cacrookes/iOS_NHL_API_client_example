@@ -334,6 +334,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rI7-Wq-CY9">
                                 <rect key="frame" x="0.0" y="109" width="414" height="704"/>
                             </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="K84-x9-viA">
+                                <rect key="frame" x="217" y="574" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -360,6 +364,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="K84-x9-viA" id="aYU-4l-7q6"/>
                         <outlet property="mapView" destination="rI7-Wq-CY9" id="TxX-qa-yCY"/>
                         <segue destination="mtg-PJ-shr" kind="show" identifier="teamMapToRosterSegue" id="rAj-Wi-LDe"/>
                     </connections>
