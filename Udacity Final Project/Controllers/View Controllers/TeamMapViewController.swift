@@ -22,9 +22,33 @@ class TeamMapViewController: UIViewController {
 
         mapView.delegate = self
         setupMap()
-        populateMap()
+        dataController.getTeams(completion: getTeamHandler(teams:error:))
     }
     
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Identifiers.teamMapToRosterSegue {
+            let annotation = mapView.selectedAnnotations.first
+            let controller = segue.destination as! RosterViewController
+            controller.dataController = dataController
+            for team in teams{
+                if team.abbreviation == annotation?.title {
+                    controller.team = team
+                    break
+                }
+            }
+        }
+    }
+    
+    // MARK: Alerts
+    fileprivate func showAlert() {
+        let alertVC = UIAlertController(title: "Error loading teams!", message: nil, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
+            self.dataController.getTeams(completion: self.getTeamHandler(teams:error:))
+        }))
+        alertVC.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -36,9 +60,13 @@ class TeamMapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    func populateMap() {
-        teams = dataController.getTeams()
-        for team in teams {
+    func getTeamHandler(teams: [Team]?, error: Error?) -> Void {
+        guard teams != nil else {
+            showAlert()
+            return
+        }
+        self.teams = teams!
+        for team in self.teams {
             let annotation = MKPointAnnotation()
             annotation.title = team.abbreviation ?? "NHL"
             annotation.coordinate = TeamAttributes.getTeamCoordinates(forTeamAbbreviation: team.abbreviation ?? "NHL")
@@ -73,5 +101,9 @@ extension TeamMapViewController: MKMapViewDelegate {
         let logoName = "\(annotation.title??.lowercased() ?? "nhl").png"
         annotationView?.image = UIImage(imageLiteralResourceName:logoName)
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        performSegue(withIdentifier: K.Identifiers.teamMapToRosterSegue, sender: self)
     }
 }
