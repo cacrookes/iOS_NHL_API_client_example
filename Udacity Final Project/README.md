@@ -14,6 +14,7 @@
   + [Favourite Players Screen](#favourite-players-screen-1)
 * [Features Implemented](#features-implemented)
 * [Methodolgy](#methodolgy)
+* [Disclaimer](#disclaimer)
 * [Acknowledgements](#acknowledgements)
 ***
 
@@ -71,7 +72,7 @@ This is the same screen you started at. But you should now see the players you a
 - Tab controller
 - Table Views
 - Map View
-- Restful API calls to the NHL's API
+- Restful API calls to the NHL's API using URLSession.
 - Core Data to store team and player information.
 - Custom Protocol to make it easy to pass information to views in the tab controller.
 - UserDefaults to store information like the ids of the user's favourite players, and when the team information was last downloaded.
@@ -85,9 +86,10 @@ When a team is selected, and the user is presented with the **Roster** screen, t
 
 When a player is selected, an API call is made to get their latest statistics. This data is not stored in Core Data since it changes frequently. An API call is made every time the user opens the **Player Detail** page.
 
-## Acknowledgements
-The team logos and NHL logo are the property of the NHL and the respective teams. They are used in this assignment purely for personal and educational purposes.
+## Disclaimer
+This project is in no way affiliated with the NHL or any of the respective teams. The team logos and NHL logo are the property of the NHL and the respective teams. They are used in this assignment purely for personal and educational purposes. If you are the owner of a trademark that is used in this project and you would like it removed, please contact me.
 
+## Acknowledgements
 I found the following resources helpful:
 - https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
 - https://stackoverflow.com/questions/24658641/ios-delete-all-core-data-swift/38449688
