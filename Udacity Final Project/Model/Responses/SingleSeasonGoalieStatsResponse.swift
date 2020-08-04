@@ -2,7 +2,8 @@
 //  SingleSeasonGoalieStatsResponse.swift
 //  Udacity Final Project
 //
-//  Created on 2020-08-01.
+//  Created by Christopher Crookes on 2020-08-01.
+//  Copyright © 2020 Christopher Crookes. All rights reserved.
 //
 
 import Foundation
