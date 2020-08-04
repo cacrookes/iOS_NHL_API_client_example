@@ -106,6 +106,7 @@
 			children = (
 				33CB788124CF7C97007D6C38 /* Udacity Final Project */,
 				33CB788024CF7C97007D6C38 /* Products */,
+				33FF21AB24D7A62600FB1E06 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,7 +128,6 @@
 				33CB788424CF7C97007D6C38 /* SceneDelegate.swift */,
 				33CB789324CF7C98007D6C38 /* Info.plist */,
 				334DE4A824D3BC9700BB2F67 /* Constants.swift */,
-				33FF21AB24D7A62600FB1E06 /* README.md */,
 			);
 			path = "Udacity Final Project";
 			sourceTree = "<group>";
