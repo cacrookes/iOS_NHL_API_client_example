@@ -2,7 +2,8 @@
 //  AppDelegate.swift
 //  Udacity Final Project
 //
-//  Created on 2020-07-27.
+//  Created by Christopher Crookes on 2020-07-27.
+//  Copyright © 2020 Christopher Crookes. All rights reserved.
 //
 
 import UIKit
