@@ -24,6 +24,8 @@ class DataController {
         return container
     }()
     
+    
+    // MARK: - Delete operations
     // based on examples in https://stackoverflow.com/questions/24658641/ios-delete-all-core-data-swift/38449688
     func deleteAll(from entity: String, completion: @escaping(Bool, Error?)->Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
@@ -54,6 +56,7 @@ class DataController {
         }
     }
     
+    // MARK: - Update operations
     func updateTeams(completion: @escaping(Bool, Error?)->Void) {
         // Delete existing team objects. This will cascade and delete player objects too.
         deleteAll(from: "Team") { (success, error) in
@@ -113,6 +116,7 @@ class DataController {
         }
     }
     
+    // MARK: - Get operations
     func getTeams(completion: ([Team]?, Error?)->Void){
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         var results:[Team] = []
@@ -145,7 +149,7 @@ class DataController {
         }
     }
     
-    
+    // MARK: - Private helper functions
     fileprivate func fetchPlayerById(_ id: Int) -> Player? {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
         let predicate = NSPredicate(format: "id == %i", id)
