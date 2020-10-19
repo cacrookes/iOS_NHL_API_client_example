@@ -8,6 +8,7 @@
 
 import Foundation
 
+// used to store encoded JSON data for a player.
 struct PlayerInfo: Codable {
     struct Team: Codable {
         let id: Int

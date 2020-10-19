@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import CoreLocation
 
+// This struct stores hardcoded team attributes that are not available through the NHL API.
+// For example, team primary colours and the location data for their home arena.
 struct TeamAttributes {
     static let attributesByTeam = [
         "ANA": [

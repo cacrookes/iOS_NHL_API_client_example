@@ -8,6 +8,7 @@
 
 import Foundation
 
+// This struct is used by PlayerInfo to store position data for a player.
 struct Position: Codable {
     let code: String
     let name: String
