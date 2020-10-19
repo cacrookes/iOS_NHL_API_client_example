@@ -208,11 +208,17 @@ struct TeamAttributes {
         return nil
     }
     
+    /// Returns the primary colour for a given team.
+    /// - Parameter forTeamAbbreviation: a string representing the three letter code for a team. For example, use "VAN" for the Vancouver Canucks.
+    /// - Returns: A UIColor representing the team's primary color.
     static func getTeamPrimaryColour(forTeamAbbreviation team: String) -> UIColor {
         let hex = attributesByTeam[team]?["primaryHexColour"] as? String ?? "#FFFFFFFF"
         return getUIColorFromHex(hex) ?? .white
     }
     
+    /// Returns the coordinates for a given team.
+    /// - Parameter forTeamAbbreviation: a string representing the three letter code for a team. For example, use "VAN" for the Vancouver Canucks.
+    /// - Returns: A CLLocationCoordinate2D with the coordinates for the team's home arena.
     static func getTeamCoordinates(forTeamAbbreviation team: String) -> CLLocationCoordinate2D {
         let latitude = attributesByTeam[team]?["latitude"] as! Double
         let longitude = attributesByTeam[team]?["longitude"] as! Double
