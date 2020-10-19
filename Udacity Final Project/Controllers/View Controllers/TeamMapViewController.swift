@@ -13,12 +13,15 @@ import MapKit
 
 class TeamMapViewController: UIViewController {
 
+    // MARK: - Global Variables
     var dataController: DataController!
     var teams = [Team]()
     
+    // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +32,7 @@ class TeamMapViewController: UIViewController {
         dataController.getTeams(completion: getTeamHandler(teams:error:))
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.teamMapToRosterSegue {
             let annotation = mapView.selectedAnnotations.first
@@ -44,7 +47,7 @@ class TeamMapViewController: UIViewController {
         }
     }
     
-    // MARK: Alerts
+    // MARK: - Alerts
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error loading teams!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
@@ -55,10 +58,12 @@ class TeamMapViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    // MARK: - IBActions
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Helper functions
     func setupMap() {
         let coordinates = CLLocationCoordinate2D(latitude: 37.0902, longitude:  -95.7129)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 6000000, longitudinalMeters: 6000000)
@@ -90,6 +95,7 @@ extension TeamMapViewController: DataControllerDelegate {
     
 }
 
+// MARK: - MKMapViewDelegate methods
 extension TeamMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "teamLocation"

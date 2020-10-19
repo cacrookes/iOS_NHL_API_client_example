@@ -11,10 +11,12 @@ import CoreData
 
 class TeamListViewController: UIViewController {
 
+    // MARK: - Global Variables
     var dataController: DataController!
     var fetchedResultsController: NSFetchedResultsController<Team>!
     fileprivate var selectedRow: IndexPath?
     
+    // MARK: - IBOutlets
     @IBOutlet weak var teamListTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -39,7 +41,7 @@ class TeamListViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
-    // MARK: Navigation
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Identifiers.teamListToRosterSegue {
             if let destination = segue.destination as? RosterViewController {
@@ -49,7 +51,7 @@ class TeamListViewController: UIViewController {
         }
     }
     
-    // MARK: Alerts
+    // MARK: - Alerts
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error loading teams!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in

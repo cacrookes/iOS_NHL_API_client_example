@@ -53,7 +53,7 @@ class FavouritesViewController: UIViewController {
         }
     }
     
-    // MARK: Alerts
+    // MARK: - Alerts
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error retrieving favourite players!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in

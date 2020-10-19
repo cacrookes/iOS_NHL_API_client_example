@@ -11,15 +11,18 @@ import CoreData
 
 class RosterViewController: UIViewController {
 
+    // MARK: - Global Variables
     var dataController: DataController!
     var team: Team!
     var fetchedResultsController: NSFetchedResultsController<Player>!
     fileprivate var selectedPlayer: Player?
     fileprivate var favePlayerIds = [Int]()
     
+    // MARK: - IBOutlets
     @IBOutlet weak var rosterTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +43,7 @@ class RosterViewController: UIViewController {
         }
     }
     
-    // MARK: Alerts
+    // MARK: - Alerts
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error loading roster!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
@@ -50,10 +53,12 @@ class RosterViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
+    // MARK: - IBActions
     @IBAction func favouritesButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - Private functions
     fileprivate func loadFavePlayerIds(){
         favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
     }
@@ -97,6 +102,7 @@ class RosterViewController: UIViewController {
     }
 }
 
+// MARK: - Tableview Delegate and DataSource methods
 extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numResults = fetchedResultsController.sections?[section].numberOfObjects ?? 0
@@ -136,6 +142,7 @@ extension RosterViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+// MARK: - NSFetchedResultsControllerDelegate methods
 extension RosterViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         guard let safeIndexPath = indexPath else { return }

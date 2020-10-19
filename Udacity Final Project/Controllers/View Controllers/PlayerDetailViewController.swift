@@ -54,7 +54,7 @@ class PlayerDetailViewController: UIViewController {
         
     }
     
-    // MARK: Alerts
+    // MARK: - Alerts
     fileprivate func showAlert() {
         let alertVC = UIAlertController(title: "Error loading \(player.name ?? "player")'s stats!", message: nil, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Try Again", style: .default, handler: { _ in
@@ -64,7 +64,7 @@ class PlayerDetailViewController: UIViewController {
         self.present(alertVC, animated: true, completion: nil)
     }
     
-    // MARK: IBActions
+    // MARK: - IBActions
     @IBAction func faveButtonPressed(_ sender: Any) {
         let playerId = Int(player.id)
         if favePlayerIds.contains(playerId) {
