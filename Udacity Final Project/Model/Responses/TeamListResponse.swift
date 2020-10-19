@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Codable struct to store the JSON returned from https://statsapi.web.nhl.com/api/v1/teams
 struct TeamListResponse: Codable {
     struct Team: Codable {
         struct Venue: Codable {
