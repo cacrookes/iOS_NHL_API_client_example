@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Codable struct to store the player info JSON returned from https://statsapi.web.nhl.com/api/v1/people/<playerID>
+// This is also referenced by the PlayerResponse struct.
 struct RosterResponse: Codable {
     struct Player: Codable {
         struct Person: Codable {

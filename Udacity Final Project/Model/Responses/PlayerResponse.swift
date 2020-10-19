@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Codable struct to store info JSON returned from https://statsapi.web.nhl.com/api/v1/teams/<teamID>/roster
 struct PlayerResponse: Codable {
     
     let copyright: String

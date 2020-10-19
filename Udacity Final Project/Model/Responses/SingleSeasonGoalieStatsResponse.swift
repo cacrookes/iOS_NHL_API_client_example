@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Codable struct to store JSON returned from https://statsapi.web.nhl.com/api/v1/people/<playerID>/stats?stats=statsSingleSeason&season=<season>
+// This struct is used when grabbing season stats for goalies
 struct SingleSeasonGoalieStatsResponse: Codable {
     struct Stats: Codable {
         struct StatsType: Codable {
