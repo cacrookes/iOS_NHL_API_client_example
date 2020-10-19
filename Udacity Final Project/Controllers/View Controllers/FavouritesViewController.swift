@@ -78,11 +78,14 @@ class FavouritesViewController: UIViewController {
         }
     }
     
+    /// Sets up the UI for the condition when the user has not yet stored any favourite players.
     func setupNoFaves() {
         favouritePlayersTableView.isHidden = true
         noFavesLabel.isHidden = false
     }
     
+    /// Loads the users favourites players into the TableView.
+    /// - Parameter playerIds: a list of Int representing the ids of the user's favourite players.
     func loadPlayers(_ playerIds: [Int]) {
         noFavesLabel.isHidden = true
         favouritePlayersTableView.isHidden = false
