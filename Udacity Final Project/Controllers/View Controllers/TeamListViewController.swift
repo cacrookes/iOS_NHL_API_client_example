@@ -65,12 +65,14 @@ class TeamListViewController: UIViewController {
     }
     
     // MARK: - Data Controller methods
+    /// This function determines if team data needs to pulled from the NHL API to be loaded in Core Data.
     fileprivate func checkIfTeamsLoaded() {
         if (UserDefaults.standard.object(forKey: K.UserDefaultValues.lastUpdateDate)) == nil {
             loadTeamsToCoreData()
         }
     }
     
+    /// This function updates the list of teams stored in Core Data.
     fileprivate func loadTeamsToCoreData(){
         activityIndicator.startAnimating()
         dataController.updateTeams { (success, error) in
