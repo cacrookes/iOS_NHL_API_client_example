@@ -41,6 +41,10 @@ class DataController {
         }
     }
     
+    /// Deletes the roster for a given team. All players for the given team will be deleted from Core Data
+    /// - Parameters:
+    ///     - team: Team object whose roster players should be deleted.
+    ///     - completion: Completion handler that indicates if the task was successful or not.
     func deleteRoster(forTeam team: Team, completion: @escaping(Bool, Error?)->Void) {
         let request: NSFetchRequest<Player> = Player.fetchRequest()
         do {
@@ -57,6 +61,8 @@ class DataController {
     }
     
     // MARK: - Update operations
+    /// Updates the list of teams in Core Data.
+    /// - Parameter completion: completion handler that takes a `Bool` and an option `Error`.
     func updateTeams(completion: @escaping(Bool, Error?)->Void) {
         // Delete existing team objects. This will cascade and delete player objects too.
         deleteAll(from: "Team") { (success, error) in
@@ -84,6 +90,10 @@ class DataController {
         }
     }
     
+    /// Stores the players for a given team in Core Data.
+    /// - Parameters:
+    ///     - team: A `Team` object representing the team whose roster players should be added to Core Data.
+    ///     - completion: a completion handler that takes a `Bool` and optional `Error`
     func updateRoster(forTeam team: Team, completion: @escaping(Bool, Error?)->Void) {
         deleteRoster(forTeam: team) { (success, error) in
             guard success else {
@@ -117,6 +127,8 @@ class DataController {
     }
     
     // MARK: - Get operations
+    /// Retrieves a list of teams stored in Core Data via a completion handler.
+    /// - Parameter completion: completion handler that takes an option list of `Team` and an optional `Error`
     func getTeams(completion: ([Team]?, Error?)->Void){
         let request: NSFetchRequest<Team> = Team.fetchRequest()
         var results:[Team] = []
@@ -128,6 +140,10 @@ class DataController {
         }
     }
     
+    /// Retrieves data for a given player via a completion handler.
+    /// - Parameters:
+    ///     - id: an `Int` representing the id of the player whose data is to be retrieved.
+    ///     - completion: a completion handler that takes an option `Player` and an optional `Error`
     func getPlayer(_ id: Int, completion: @escaping(Player?, Error?)->Void) {
         if let player = fetchPlayerById(id) {
             completion(player, nil)
