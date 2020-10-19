@@ -81,6 +81,7 @@ class PlayerDetailViewController: UIViewController {
     }
     
     // MARK: - Configuring UI methods
+    /// Hides the favourites button when navigating here from the Favourite's page.
     fileprivate func configureFavouritesButton() {
         if let navController = self.navigationController {
             let vcCount = navController.viewControllers.count
@@ -90,6 +91,7 @@ class PlayerDetailViewController: UIViewController {
         }
     }
     
+    /// Set the favourites button text depending on whether or not the player is in the user's favourite player's list.
     fileprivate func setFaveButtonText() {
         favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
         if favePlayerIds.contains(Int(player.id)) {
@@ -99,6 +101,7 @@ class PlayerDetailViewController: UIViewController {
         }
     }
     
+    /// Constructs the top label on the screen, including the player's position, weight, and age.
     fileprivate func setTopLabel() {
         var topLabelArray = [String]()
         if let position = player.primaryPosition {
@@ -113,6 +116,7 @@ class PlayerDetailViewController: UIViewController {
         topLabel.textAlignment = .center
     }
     
+    /// Constructs the subheading for the page including the player's team.
     fileprivate func setSubHeading() {
         logoImageView.image = UIImage(imageLiteralResourceName: "\(player.team?.abbreviation?.lowercased() ?? "nhl").png")
         subTitleLabel.text = player.team?.name ?? "No Current Team"
@@ -120,6 +124,7 @@ class PlayerDetailViewController: UIViewController {
         
     }
     
+    /// Sets the player's stats.
     fileprivate func setStats() {
         if player.primaryPosition == "Goalie" {
             setGoalieStats()
@@ -128,6 +133,7 @@ class PlayerDetailViewController: UIViewController {
         }
     }
     
+    /// Sets up the UI in the case the player has no stats for the current season.
     fileprivate func setNoStats() {
         self.gpLabel.text = "-"
         self.goalsLabel.text = "-"
@@ -137,6 +143,7 @@ class PlayerDetailViewController: UIViewController {
         self.pimLabel.text = "-"
     }
     
+    /// Displays the player's stats for the current season. For goalies, use `setGoalieStats` instead.
     fileprivate func setPlayerStats() {
         activityIndicator.startAnimating()
         NHLClient.getPlayerStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in
@@ -158,7 +165,8 @@ class PlayerDetailViewController: UIViewController {
             }
         }
     }
-        
+    
+    /// Display's the players stats for the current season. Use this function for goalies. Use `setPlayerStats` for other skaters.
     fileprivate func setGoalieStats() {
         activityIndicator.startAnimating()
         NHLClient.getGoalieStats(forPlayerID: Int(player.id), forSeason: "20192020") { (stats, error) in

@@ -59,10 +59,15 @@ class RosterViewController: UIViewController {
     }
     
     // MARK: - Private functions
+    /// Loads the ids for the user's favourite players from UserDefaults into the favePlayerIds array.
     fileprivate func loadFavePlayerIds(){
         favePlayerIds = UserDefaults.standard.array(forKey: K.UserDefaultValues.favouritePlayers)! as! [Int]
     }
     
+    /// A completion handler that handles updating the roster Table View.
+    /// - Parameters:
+    ///     - success: (optional) indicates if the roster was successfully updated.
+    ///     - error: (optional) stores errors from the update process.
     fileprivate func updateRosterHandler(success: Bool, error: Error?) -> Void {
         activityIndicator.stopAnimating()
         guard success else {

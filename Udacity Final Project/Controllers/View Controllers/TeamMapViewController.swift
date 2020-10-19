@@ -64,12 +64,17 @@ class TeamMapViewController: UIViewController {
     }
     
     // MARK: - Helper functions
+    /// Sets up the initial map, centering the Map on North America sized to highlight Canada and the USA.
     func setupMap() {
         let coordinates = CLLocationCoordinate2D(latitude: 37.0902, longitude:  -95.7129)
         let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 6000000, longitudinalMeters: 6000000)
         mapView.setRegion(region, animated: true)
     }
     
+    /// A completion handler that adds Point Annotations on the map for each team.
+    /// - Parameters:
+    ///     - teams: An optional list of Team
+    ///     - error: An optional error.
     func getTeamHandler(teams: [Team]?, error: Error?) -> Void {
         activityIndicator.stopAnimating()
         guard teams != nil else {
@@ -110,6 +115,7 @@ extension TeamMapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
 
+        // use the team logo for the team's pin. Use the NHL logo if the team logo is not found.
         let logoName = "\(annotation.title??.lowercased() ?? "nhl").png"
         annotationView?.image = UIImage(imageLiteralResourceName:logoName)
         return annotationView
